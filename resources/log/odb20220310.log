@@ -1,0 +1,104 @@
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-10 00:29:19 #1 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\bets.temp' is opened by 14268@LAPTOP-9GAIOTJ7
+
+[2022-03-10 00:29:19 #2 store] 
+Configuration path: ?
+
+[2022-03-10 00:29:19 #3 type] 
+Type domain.Question is not enhanced.
+
+[2022-03-10 00:29:19 #4 type] 
+Type domain.Event is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-10 03:29:37 #1 server] 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at com.objectdb.o.SMR.o(SMR.java:260)
+	at com.objectdb.o.SMR.f(SMR.java:160)
+	at com.objectdb.o.TOL.run(TOL.java:117)
+	at com.objectdb.Server.runCommand(Server.java:193)
+	at com.objectdb.Server.run(Server.java:102)
+	at com.objectdb.ServerRunner.main(ServerRunner.java:31)
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-10 03:32:15 #1 server] 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at com.objectdb.o.SMR.o(SMR.java:260)
+	at com.objectdb.o.SMR.f(SMR.java:160)
+	at com.objectdb.o.TOL.run(TOL.java:117)
+	at com.objectdb.Server.runCommand(Server.java:193)
+	at com.objectdb.Server.run(Server.java:102)
+	at com.objectdb.ServerRunner.main(ServerRunner.java:31)
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-10 03:32:23 #1 server] 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at com.objectdb.o.SMR.o(SMR.java:260)
+	at com.objectdb.o.SMR.f(SMR.java:160)
+	at com.objectdb.o.TOL.run(TOL.java:117)
+	at com.objectdb.Server.runCommand(Server.java:193)
+	at com.objectdb.Server.run(Server.java:102)
+	at com.objectdb.ServerRunner.main(ServerRunner.java:31)
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-10 03:32:59 #1 server] 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at com.objectdb.o.SMR.o(SMR.java:260)
+	at com.objectdb.o.SMR.f(SMR.java:160)
+	at com.objectdb.o.TOL.run(TOL.java:117)
+	at com.objectdb.Server.runCommand(Server.java:193)
+	at com.objectdb.Server.run(Server.java:102)
+	at com.objectdb.ServerRunner.main(ServerRunner.java:31)
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-10 03:51:04 #1 server] 
+java.net.BindException: Address already in use: JVM_Bind
+	at java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketBind(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.bind(Unknown Source)
+	at java.net.PlainSocketImpl.bind(Unknown Source)
+	at java.net.ServerSocket.bind(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at java.net.ServerSocket.<init>(Unknown Source)
+	at com.objectdb.o.SMR.o(SMR.java:260)
+	at com.objectdb.o.SMR.f(SMR.java:160)
+	at com.objectdb.o.TOL.run(TOL.java:117)
+	at com.objectdb.Server.runCommand(Server.java:193)
+	at com.objectdb.Server.run(Server.java:102)
+	at com.objectdb.ServerRunner.main(ServerRunner.java:31)
+
