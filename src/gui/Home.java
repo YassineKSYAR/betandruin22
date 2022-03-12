@@ -15,6 +15,8 @@ import javax.swing.JLabel;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JToolBar;
 
 
 public class Home extends JFrame {
@@ -53,28 +55,32 @@ public class Home extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Welcome To Bet and Ruin");
+		JLabel lblNewLabel = new JLabel("WELCOME TO BET AND RUIN");
 		lblNewLabel.setForeground(new Color(0, 0, 0));
-		lblNewLabel.setBounds(38, 40, 283, 39);
+		lblNewLabel.setBounds(0, 40, 368, 39);
 		lblNewLabel.setVerticalAlignment(SwingConstants.BOTTOM);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Arial", Font.PLAIN, 20));
+		lblNewLabel.setFont(new Font("Arial", Font.BOLD | Font.ITALIC, 16));
 		contentPane.add(lblNewLabel);
 		
 		JButton Login = new JButton("LOG-IN");
-		Login.setForeground(Color.BLACK);
+		Login.setForeground(Color.WHITE);
 		Login.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				Login newRegister=new Login();
+				newRegister.show();
+				dispose();
 			}
 		});
-		Login.setBackground(Color.WHITE);
+		Login.setBackground(Color.BLACK);
 		Login.setBounds(87, 128, 170, 26);
 		contentPane.add(Login);
 		
 	
 		JButton Register = new JButton("REGISTER");
-		Register.setBackground(Color.WHITE);
-		Register.setBounds(87, 164, 170, 26);
+		Register.setForeground(Color.WHITE);
+		Register.setBackground(Color.BLACK);
+		Register.setBounds(87, 184, 170, 26);
 		Register.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Register newRegister=new Register();
@@ -84,21 +90,22 @@ public class Home extends JFrame {
 		});
 		contentPane.add(Register);
 		
-		JButton QueryQuestions = new JButton("QUERY QUESTIONS");
-		QueryQuestions.setBackground(Color.WHITE);
-		QueryQuestions.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		QueryQuestions.setBounds(87, 200, 170, 26);
-		contentPane.add(QueryQuestions);
+	
 		
 		JButton Close = new JButton("Close");
+		Close.setBackground(Color.BLACK);
+		Close.setForeground(Color.WHITE);
 		Close.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 			}
 		});
 		Close.setBounds(127, 249, 85, 21);
 		contentPane.add(Close);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\hejba\\Desktop\\betandruin22\\icone.jpeg"));
+		lblNewLabel_1.setBounds(0, 0, 368, 318);
+		contentPane.add(lblNewLabel_1);
 	}
 }
