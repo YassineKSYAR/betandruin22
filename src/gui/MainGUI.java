@@ -19,16 +19,20 @@ import javax.swing.SwingConstants;
 
 import businessLogic.BlFacade;
 import domain.Event;
+import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.Color;
 
 
 public class MainGUI extends JFrame {
 
-	private static final long serialVersionUID = 1L;
+	
 
 	private JPanel mainPane;
 	protected JLabel selectOptionLbl;
 	private JButton browseQuestionsBtn;
 	private JButton createQuestionBtn;
+	private JButton createEventBtn;
 	private JPanel localePane;
 	private JRadioButton euskaraRbtn;
 	private JRadioButton castellanoRbtn;
@@ -36,6 +40,7 @@ public class MainGUI extends JFrame {
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	private BlFacade businessLogic;
+	private JLabel lblNewLabel;
 
 	public BlFacade getBusinessLogic(){
 		return businessLogic;
@@ -63,7 +68,7 @@ public class MainGUI extends JFrame {
 			}
 		});
 
-		this.setBounds(100, 100, 500, 300);
+		this.setBounds(100, 100, 225, 226);
 
 		this.initializeMainPane();
 		this.setContentPane(mainPane);
@@ -75,24 +80,38 @@ public class MainGUI extends JFrame {
 
 	private void initializeMainPane() {
 		mainPane = new JPanel();
-		mainPane.setLayout(new GridLayout(4, 1, 0, 0));
+		mainPane.setLayout(new GridLayout(6,0,0,6));
+		{
+			lblNewLabel = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("MainGUI.lblNewLabel.text")); //$NON-NLS-1$ //$NON-NLS-2$
+			lblNewLabel.setBackground(Color.WHITE);
+			lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+			lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
+			lblNewLabel.setForeground(Color.RED);
+			mainPane.add(lblNewLabel);
+		}
 
 		selectOptionLbl = new JLabel(ResourceBundle.getBundle("Etiquetas").
 				getString("SelectUseCase"));
+		selectOptionLbl.setBackground(Color.WHITE);
 		selectOptionLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		mainPane.add(selectOptionLbl);
-
+        
+		
 		initializeBrowseQuestionsBtn();
 		mainPane.add(browseQuestionsBtn);
 		initializeCreateQuestionBtn();
 		mainPane.add(createQuestionBtn);
-
+		initializeCreateEventBtn();
+		mainPane.add(createEventBtn );
 		initializeLocalePane();
 		mainPane.add(localePane);
 	}
 
 	private void initializeBrowseQuestionsBtn() {
 		browseQuestionsBtn = new JButton();
+		browseQuestionsBtn.setForeground(Color.WHITE);
+		browseQuestionsBtn.setBackground(Color.BLACK);
+		browseQuestionsBtn.setFont(new Font("Tahoma", Font.BOLD, 12));
 		browseQuestionsBtn.setText(ResourceBundle.getBundle("Etiquetas").
 				getString("BrowseQuestions"));
 		browseQuestionsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -106,6 +125,9 @@ public class MainGUI extends JFrame {
 
 	private void initializeCreateQuestionBtn() {
 		createQuestionBtn = new JButton();
+		createQuestionBtn.setBackground(Color.BLACK);
+		createQuestionBtn.setForeground(Color.WHITE);
+		createQuestionBtn.setFont(new Font("Tahoma", Font.BOLD, 12));
 		createQuestionBtn.setText(ResourceBundle.getBundle("Etiquetas").
 				getString("CreateQuestion"));
 		createQuestionBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -115,10 +137,27 @@ public class MainGUI extends JFrame {
 						new Vector<Event>());
 				createQuestionWindow.setBusinessLogic(businessLogic);
 				createQuestionWindow.setVisible(true);
+				
 			}
 		});
 	}
-
+	private void initializeCreateEventBtn() {
+		createEventBtn = new JButton();
+		createEventBtn.setBackground(Color.BLACK);
+		createEventBtn.setForeground(Color.WHITE);
+		createEventBtn.setFont(new Font("Tahoma", Font.BOLD, 12));
+		createEventBtn.setText(ResourceBundle.getBundle("Etiquetas").
+				getString("CreateEvent"));
+		createEventBtn.addActionListener(new java.awt.event.ActionListener() {
+			@Override
+			public void actionPerformed(java.awt.event.ActionEvent e) {
+				CreateEvent createEventWindow = new CreateEvent(businessLogic);
+				createEventWindow.setBusinessLogic(businessLogic);
+				createEventWindow.setVisible(true);
+				
+			}
+		});
+	}
 	private void initializeLocalePane() {
 		localePane = new JPanel();
 
@@ -173,6 +212,8 @@ public class MainGUI extends JFrame {
 	private void redraw() {
 		selectOptionLbl.setText(ResourceBundle.getBundle("Etiquetas").
 				getString("SelectUseCase"));
+		createEventBtn.setText(ResourceBundle.getBundle("Etiquetas").
+				getString("CreateEvent"));
 		browseQuestionsBtn.setText(ResourceBundle.getBundle("Etiquetas").
 				getString("BrowseQuestions"));
 		createQuestionBtn.setText(ResourceBundle.getBundle("Etiquetas").
