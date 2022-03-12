@@ -176,8 +176,8 @@ public class CreateEvent extends JFrame {
 		getContentPane().add(lblNewLabel);
 		icon.setBounds(0, 0, 336, 340);
 		getContentPane().add(icon);
-		icon.setIcon(new ImageIcon("C:\\Users\\hejba\\Desktop\\betandruin22\\icone.jpeg"));
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\hejba\\Desktop\\betandruin22\\icone.jpeg"));
+		icon.setIcon(new ImageIcon("./icone.jpeg"));
+		lblNewLabel_1.setIcon(new ImageIcon("./icone.jpeg"));
 		lblNewLabel_1.setBounds(0, 336, 336, 127);
 		
 		getContentPane().add(lblNewLabel_1);

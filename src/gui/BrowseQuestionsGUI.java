@@ -27,6 +27,11 @@ import com.toedter.calendar.JCalendar;
 import businessLogic.BlFacade;
 import configuration.UtilDate;
 import domain.Question;
+import javax.swing.JTextField;
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.SwingConstants;
+import java.awt.SystemColor;
 
 public class BrowseQuestionsGUI extends JFrame {
 
@@ -66,7 +71,10 @@ public class BrowseQuestionsGUI extends JFrame {
 	};
 	private String[] questionColumnNames = new String[] {
 			ResourceBundle.getBundle("Etiquetas").getString("QuestionN"), 
-			ResourceBundle.getBundle("Etiquetas").getString("Question")
+			ResourceBundle.getBundle("Etiquetas").getString("Question"),
+			//////////////////////////////////////////////////////////////////////
+			ResourceBundle.getBundle("Etiquetas").getString("MinimumBetPrice"),
+			ResourceBundle.getBundle("Etiquetas").getString("Fee")
 	};
 
 
@@ -88,7 +96,7 @@ public class BrowseQuestionsGUI extends JFrame {
 	private void jbInit() throws Exception {
 
 		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(700, 500));
+		this.setSize(new Dimension(700, 599));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("BrowseQuestions"));
 
 		eventDateLbl.setBounds(new Rectangle(40, 15, 140, 25));
@@ -99,7 +107,7 @@ public class BrowseQuestionsGUI extends JFrame {
 		this.getContentPane().add(questionLbl);
 		this.getContentPane().add(eventLbl);
 
-		closeBtn.setBounds(new Rectangle(274, 419, 130, 30));
+		closeBtn.setBounds(new Rectangle(269, 441, 130, 30));
 
 		closeBtn.addActionListener(new ActionListener() {
 			@Override
@@ -135,9 +143,9 @@ public class BrowseQuestionsGUI extends JFrame {
 
 					if (currentMonth != previousMonth) {
 						if (currentMonth == previousMonth + 2) {
-							// Si en JCalendar est√° 30 de enero y se avanza al mes siguiente, 
-							// devolver√≠a 2 de marzo (se toma como equivalente a 30 de febrero)
-							// Con este c√≥digo se dejar√° como 1 de febrero en el JCalendar
+							// Si en JCalendar est· 30 de enero y se avanza al mes siguiente, 
+							// devolverÌa 2 de marzo (se toma como equivalente a 30 de febrero)
+							// Con este cÛdigo se dejar· como 1 de febrero en el JCalendar
 							currentCalendar.set(Calendar.MONTH, previousMonth + 1);
 							currentCalendar.set(Calendar.DAY_OF_MONTH, 1);
 						}						
@@ -192,10 +200,11 @@ public class BrowseQuestionsGUI extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				int i = eventTable.getSelectedRow();
 				domain.Event ev = (domain.Event)eventTableModel.getValueAt(i,2); // obtain ev object
+				System.out.println(ev);
 				Vector<Question> queries = ev.getQuestions();
-
+				
 				questionTableModel.setDataVector(null, questionColumnNames);
-
+				
 				if (queries.isEmpty())
 					questionLbl.setText(ResourceBundle.getBundle("Etiquetas").
 							getString("NoQuestions") + ": " + ev.getDescription());
@@ -207,10 +216,15 @@ public class BrowseQuestionsGUI extends JFrame {
 					Vector<Object> row = new Vector<Object>();
 					row.add(q.getQuestionNumber());
 					row.add(q.getQuestion());
+					row.add(q.getBetMinimum());
+					row.add(q.getFee());
 					questionTableModel.addRow(row);	
+					
 				}
-				questionTable.getColumnModel().getColumn(0).setPreferredWidth(25);
-				questionTable.getColumnModel().getColumn(1).setPreferredWidth(268);
+				questionTable.getColumnModel().getColumn(0).setPreferredWidth(35);
+				questionTable.getColumnModel().getColumn(1).setPreferredWidth(250);
+				questionTable.getColumnModel().getColumn(2).setPreferredWidth(35);
+				questionTable.getColumnModel().getColumn(3).setPreferredWidth(35);
 			}
 		});
 
@@ -220,13 +234,36 @@ public class BrowseQuestionsGUI extends JFrame {
 		eventTable.setModel(eventTableModel);
 		eventTable.getColumnModel().getColumn(0).setPreferredWidth(25);
 		eventTable.getColumnModel().getColumn(1).setPreferredWidth(268);
+		///////////////////////////////////////////////////////////////////
+		questionTable.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int j = questionTable.getSelectedRow();
+				String QString = (String)questionTableModel.getValueAt(j,1); // obtain question object
+				float QMinBet = (float)questionTableModel.getValueAt(j,2);
+				int QFee = (int)questionTableModel.getValueAt(j,3);
+				
+				//System.out.println(Q);
+				//Question question = (Question) Q;
+				//System.out.println(question);
+				System.out.println("Question is" + QString + "Fee is " + QFee + "Minimum bet is" + QMinBet );
+			}
+		});
 
 		questionScrollPane.setViewportView(questionTable);
 		questionTableModel = new DefaultTableModel(null, questionColumnNames);
 
-		questionTable.setModel(questionTableModel);
-		questionTable.getColumnModel().getColumn(0).setPreferredWidth(25);
-		questionTable.getColumnModel().getColumn(1).setPreferredWidth(268);
+		questionTable.setModel(/*new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"QuestionN", "Question:", "Mini Bet", "Fee"
+			}
+		)*/ questionTableModel);
+		questionTable.getColumnModel().getColumn(0).setPreferredWidth(35);
+		questionTable.getColumnModel().getColumn(1).setPreferredWidth(250);
+		questionTable.getColumnModel().getColumn(2).setPreferredWidth(35);
+		questionTable.getColumnModel().getColumn(3).setPreferredWidth(35);
 
 		this.getContentPane().add(eventScrollPane, null);
 		this.getContentPane().add(questionScrollPane, null);

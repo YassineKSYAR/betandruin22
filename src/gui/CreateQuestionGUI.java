@@ -63,6 +63,7 @@ public class CreateQuestionGUI extends JFrame {
 	private JLabel errorLbl = new JLabel();
 
 	private Vector<Date> datesWithEventsInCurrentMonth = new Vector<Date>();
+	private JTextField FeeInput;
 
 	public void setBusinessLogic(BlFacade bl) {
 		businessLogic = bl;		
@@ -80,12 +81,12 @@ public class CreateQuestionGUI extends JFrame {
 	private void jbInit(Vector<domain.Event> v) throws Exception {
 
 		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(604, 370));
+		this.setSize(new Dimension(636, 437));
 		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("CreateQuestion"));
 
 		eventComboBox.setModel(eventModel);
 		eventComboBox.setBounds(new Rectangle(275, 47, 250, 20));
-		listOfEventsLbl.setBounds(new Rectangle(290, 18, 277, 20));
+		listOfEventsLbl.setBounds(new Rectangle(275, 18, 277, 20));
 		queryLbl.setBounds(new Rectangle(25, 211, 75, 20));
 		queryText.setBounds(new Rectangle(100, 211, 429, 20));
 		minBetLbl.setBounds(new Rectangle(25, 243, 75, 20));
@@ -94,7 +95,7 @@ public class CreateQuestionGUI extends JFrame {
 		calendar.setBounds(new Rectangle(40, 50, 225, 150));
 		eventScrollPane.setBounds(new Rectangle(25, 44, 346, 116));
 
-		createBtn.setBounds(new Rectangle(100, 275, 130, 30));
+		createBtn.setBounds(new Rectangle(217, 292, 130, 30));
 		createBtn.setEnabled(false);
 
 		createBtn.addActionListener(new ActionListener() {
@@ -103,7 +104,7 @@ public class CreateQuestionGUI extends JFrame {
 				jButtonCreate_actionPerformed(e);
 			}
 		});
-		closeBtn.setBounds(new Rectangle(275, 275, 130, 30));
+		closeBtn.setBounds(new Rectangle(450, 292, 130, 30));
 		closeBtn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -115,7 +116,7 @@ public class CreateQuestionGUI extends JFrame {
 		msgLbl.setForeground(Color.red);
 		// jLabelMsg.setSize(new Dimension(305, 20));
 
-		errorLbl.setBounds(new Rectangle(175, 240, 305, 20));
+		errorLbl.setBounds(new Rectangle(182, 243, 347, 20));
 		errorLbl.setForeground(Color.red);
 
 		this.getContentPane().add(msgLbl, null);
@@ -139,6 +140,15 @@ public class CreateQuestionGUI extends JFrame {
 		eventDateLbl.setBounds(new Rectangle(40, 15, 140, 25));
 		eventDateLbl.setBounds(40, 16, 140, 25);
 		getContentPane().add(eventDateLbl);
+		
+		FeeInput = new JTextField();
+		FeeInput.setBounds(new Rectangle(100, 243, 60, 20));
+		FeeInput.setBounds(100, 274, 60, 20);
+		getContentPane().add(FeeInput);
+		
+		JLabel lblNewLabel = new JLabel("Fee:");
+		lblNewLabel.setBounds(25, 277, 49, 14);
+		getContentPane().add(lblNewLabel);
 
 
 		// Code for JCalendar
@@ -158,9 +168,9 @@ public class CreateQuestionGUI extends JFrame {
 					int monthAct = previousCalendar.get(Calendar.MONTH);
 					if (monthAct!=monthAnt) {
 						if (monthAct==monthAnt+2) { 
-							// Si en JCalendar estÃ¡ 30 de enero y se avanza al mes siguiente, 
-							// devolverá 2 de marzo (se toma como equivalente a 30 de febrero)
-							// Con este código se dejará como 1 de febrero en el JCalendar
+							// Si en JCalendar está 30 de enero y se avanza al mes siguiente, 
+							// devolver� 2 de marzo (se toma como equivalente a 30 de febrero)
+							// Con este c�digo se dejar� como 1 de febrero en el JCalendar
 							previousCalendar.set(Calendar.MONTH, monthAnt + 1);
 							previousCalendar.set(Calendar.DAY_OF_MONTH, 1);
 						}
@@ -260,11 +270,12 @@ public class CreateQuestionGUI extends JFrame {
 
 				// It could be to trigger an exception if the introduced string is not a number
 				float inputPrice = Float.parseFloat(priceText.getText());
+				int inputFee = Integer.parseInt(FeeInput.getText());
 
-				if (inputPrice <= 0)
+				if (inputPrice <= 0 && inputFee<=0)
 					errorLbl.setText(ResourceBundle.getBundle("Etiquetas").getString("ErrorNumber"));
 				else {
-					businessLogic.createQuestion(event, inputQuestion, inputPrice);
+					businessLogic.createQuestion(event, inputQuestion, inputPrice,inputFee);
 					msgLbl.setText(ResourceBundle.getBundle("Etiquetas").getString("QuestionCreated"));
 				}
 			} else

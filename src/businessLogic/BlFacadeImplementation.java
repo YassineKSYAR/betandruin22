@@ -56,7 +56,7 @@ public class BlFacadeImplementation implements BlFacade {
 	 */
 	@Override
 	@WebMethod
-	public Question createQuestion(Event event, String question, float betMinimum) 
+	public Question createQuestion(Event event, String question, float betMinimum, int fee) 
 			throws EventFinished, QuestionAlreadyExist {
 
 		//The minimum bid must be greater than 0
@@ -67,7 +67,7 @@ public class BlFacadeImplementation implements BlFacade {
 			throw new EventFinished(ResourceBundle.getBundle("Etiquetas").
 					getString("ErrorEventHasFinished"));
 
-		qry = dbManager.createQuestion(event, question, betMinimum);		
+		qry = dbManager.createQuestion(event, question, betMinimum,fee);		
 		dbManager.close();
 		return qry;
 	}

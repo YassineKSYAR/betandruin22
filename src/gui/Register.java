@@ -267,7 +267,7 @@ public class Register extends JFrame {
 		signUp.add(logBtn);
 		
 		JLabel icon = new JLabel("");
-		icon.setIcon(new ImageIcon("C:\\Users\\hejba\\Desktop\\betandruin22\\icone.jpeg"));
+		icon.setIcon(new ImageIcon("./icone.jpeg"));
 		icon.setBounds(0, 0, 377, 365);
 		signUp.add(icon);
 		

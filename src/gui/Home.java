@@ -104,7 +104,7 @@ public class Home extends JFrame {
 		contentPane.add(Close);
 		
 		JLabel lblNewLabel_1 = new JLabel("");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\hejba\\Desktop\\betandruin22\\icone.jpeg"));
+		lblNewLabel_1.setIcon(new ImageIcon("./icone.jpeg"));
 		lblNewLabel_1.setBounds(0, 0, 368, 318);
 		contentPane.add(lblNewLabel_1);
 	}
