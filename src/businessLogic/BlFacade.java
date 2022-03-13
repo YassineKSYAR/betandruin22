@@ -8,6 +8,7 @@ import javax.jws.WebService;
 
 import domain.Event;
 import domain.Question;
+import exceptions.EventAlreadyExist;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 
@@ -30,7 +31,8 @@ public interface BlFacade  {
 	@WebMethod
 	Question createQuestion(Event event, String question, float betMinimum, int fee) 
 			throws EventFinished, QuestionAlreadyExist;
-		
+	
+	Event createEvent(String eventDescription, Date date);
 	/**
 	 * This method retrieves all the events of a given date 
 	 * 

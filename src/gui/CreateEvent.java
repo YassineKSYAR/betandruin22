@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.Dimension;
+
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,6 +16,7 @@ import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,6 +29,8 @@ import com.toedter.calendar.JCalendar;
 import businessLogic.BlFacade;
 import configuration.UtilDate;
 import domain.Question;
+import exceptions.EventAlreadyExist;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.ImageIcon;
@@ -38,17 +42,14 @@ public class CreateEvent extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private BlFacade businessLogic;
-
-	private final JLabel eventDateLbl = new JLabel(ResourceBundle.getBundle("Etiquetas").
-			getString("EventDate"));
-	
-	private final JLabel eventLbl = new JLabel(ResourceBundle.getBundle("Etiquetas").
-			getString("Events")); 
-
-	// Code for JCalendar
-	private JCalendar calendar = new JCalendar();
 	private Calendar previousCalendar;
 	private Calendar currentCalendar;
+	private JCalendar calendar = new JCalendar();
+	private java.util.Date currentDate = null;
+	
+	private int day;
+	private int month;
+	private int year;
 
 	private Vector<Date> datesWithEventsInCurrentMonth = new Vector<Date>();
 
@@ -64,10 +65,7 @@ public class CreateEvent extends JFrame {
 			ResourceBundle.getBundle("Etiquetas").getString("QuestionN"), 
 			ResourceBundle.getBundle("Etiquetas").getString("Question")
 	};
-	private JTextField eventNum;
-	private final JTextField eventDesc = new JTextField();
-	private final JLabel icon = new JLabel("");
-	private final JLabel lblNewLabel_1 = new JLabel("");
+	private JTextField InputEvent;
 
 
 	public void setBusinessLogic(BlFacade bl) {
@@ -76,9 +74,6 @@ public class CreateEvent extends JFrame {
 
 	public CreateEvent(BlFacade bl) {
 		setBackground(Color.YELLOW);
-		eventDesc.setText("");
-		eventDesc.setBounds(40, 348, 225, 19);
-		eventDesc.setColumns(10);
 		businessLogic = bl;
 		try {
 			jbInit();
@@ -90,97 +85,101 @@ public class CreateEvent extends JFrame {
 
 
 	private void jbInit() throws Exception {
-
-		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(350, 500));
-		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("BrowseQuestions"));
-		eventDateLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
-		eventDateLbl.setHorizontalAlignment(SwingConstants.CENTER);
-
-		eventDateLbl.setBounds(new Rectangle(50, 10, 225, 25));
-		eventLbl.setFont(new Font("Tahoma", Font.BOLD, 15));
-		eventLbl.setHorizontalAlignment(SwingConstants.CENTER);
-		eventLbl.setBounds(40, 237, 225, 16);
-
-		this.getContentPane().add(eventDateLbl, null);
-		this.getContentPane().add(eventLbl);
-
+		
 		calendar.setBounds(new Rectangle(40, 50, 225, 150));
 
+		// jLabelMsg.setSize(new Dimension(305, 20));
+
+		this.getContentPane().add(calendar, null);
+
 		datesWithEventsInCurrentMonth = businessLogic.getEventsMonth(calendar.getDate());
-		CreateQuestionGUI.paintDaysWithEvents(calendar, datesWithEventsInCurrentMonth);
+		CreateQuestionGUI.paintDaysWithEvents(calendar,datesWithEventsInCurrentMonth);
+		
 
 		// Code for JCalendar
 		this.calendar.addPropertyChangeListener(new PropertyChangeListener() {
-
 			@Override
-			public void propertyChange(PropertyChangeEvent propertyChangeEvent) {
-
-				if (propertyChangeEvent.getPropertyName().equals("locale")) {
-					calendar.setLocale((Locale) propertyChangeEvent.getNewValue());
-				}
-				else if (propertyChangeEvent.getPropertyName().equals("calendar")) {
-					previousCalendar = (Calendar) propertyChangeEvent.getOldValue();
-					currentCalendar = (Calendar) propertyChangeEvent.getNewValue();
-					DateFormat dateformat1 = DateFormat.getDateInstance(1, calendar.getLocale());
-					Date firstDay = UtilDate.trim(new Date(calendar.getCalendar().getTime().getTime()));
-
-					int previousMonth = previousCalendar.get(Calendar.MONTH);
-					int currentMonth = currentCalendar.get(Calendar.MONTH);
-
-					if (currentMonth != previousMonth) {
-						if (currentMonth == previousMonth + 2) {
-							// Si en JCalendar está 30 de enero y se avanza al mes siguiente, 
-							// devolvería 2 de marzo (se toma como equivalente a 30 de febrero)
-							// Con este código se dejará como 1 de febrero en el JCalendar
-							currentCalendar.set(Calendar.MONTH, previousMonth + 1);
-							currentCalendar.set(Calendar.DAY_OF_MONTH, 1);
-						}						
-
-						calendar.setCalendar(currentCalendar);
-						datesWithEventsInCurrentMonth = businessLogic.getEventsMonth(calendar.
-								getDate());
-					}
+			public void propertyChange(PropertyChangeEvent propertychangeevent) {
+				if (propertychangeevent.getPropertyName().equals("locale")) {
+					calendar.setLocale((Locale) propertychangeevent.getNewValue());
+				} 
+				else if (propertychangeevent.getPropertyName().equals("calendar"))
+				{
+					currentCalendar = (Calendar) propertychangeevent.getNewValue();
+					//currentDate=(Date)currentCalendar.getTime();
+					System.out.println("Selected Calendar date is : "+currentCalendar.getTime());
+					currentDate =(java.util.Date)(currentCalendar.getTime());
+					System.out.println("Selected date is : "+ currentDate);
+					
+					//Calendar calInt = currentCalendar.getInstance();
+					 day = currentCalendar.get(currentCalendar.DATE);
+					 month = currentCalendar.get(currentCalendar.MONTH);
+					 year = currentCalendar.get(currentCalendar.YEAR);
 					
 				}
-			} 
-		});
 
-		this.getContentPane().add(calendar, null);
+			}
+			
+		});
+		
+		/////////////////////////////////////////////////////////////////////////////////////
+		this.getContentPane().setLayout(null);
+		this.setSize(new Dimension(350, 500));
+		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("CreateEvent"));
 		
 		JButton createEventBtn = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateEvent.btnNewButton.text")); //$NON-NLS-1$ //$NON-NLS-2$
+		createEventBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JButtonCreateEvent(e);
+			}
+
+			private void JButtonCreateEvent(ActionEvent e) {
+				// TODO Auto-generated method stub
+				//msgLbl1.setText("");
+				
+				// Displays an exception if the query field is empty
+				String inputEvent = InputEvent.getText();
+
+				if (inputEvent.length() > 0) {
+
+					System.out.println("year = " + year + "month = " + month + "day = " + day);
+					//businessLogic.createEvent(currentDate,description);
+					businessLogic.createEvent(inputEvent, UtilDate.newDate(year, month, day));
+					System.out.println(UtilDate.newDate(year, month, day)+"****");
+					//msgLbl.setText(ResourceBundle.getBundle("Etiquetas").getString("EventCreated"));
+					
+				} else {
+					//msgLbl.setText("Inpu Feild is empty");
+				    System.out.println("Event not created");
+				}
+			}
+		});
 		createEventBtn.setBackground(Color.BLACK);
 		createEventBtn.setForeground(Color.WHITE);
-		createEventBtn.setBounds(230, 408, 85, 21);
+		createEventBtn.setBounds(130, 408, 85, 21);
 		getContentPane().add(createEventBtn);
 		
 		JButton close = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateEvent.btnNewButton_1.text")); //$NON-NLS-1$ //$NON-NLS-2$
 		close.setForeground(Color.WHITE);
 		close.setBackground(Color.BLACK);
-		close.setBounds(10, 408, 85, 21);
+		close.setBounds(241, 408, 85, 21);
 		getContentPane().add(close);
 		
-		eventNum = new JTextField();
-		eventNum.setText("");
-		eventNum.setBounds(40, 263, 225, 19);
-		getContentPane().add(eventNum);
-		eventNum.setColumns(10);
+		JLabel EventLbl = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateEvent.EventLbl.text")); //$NON-NLS-1$ //$NON-NLS-2$
+		EventLbl.setBounds(40, 246, 71, 14);
+		getContentPane().add(EventLbl);
 		
-		getContentPane().add(eventDesc);
+		InputEvent = new JTextField();
+		InputEvent.setText("");
+		InputEvent.setBounds(40, 271, 225, 20);
+		getContentPane().add(InputEvent);
+		InputEvent.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateEvent.lblNewLabel.text")); //$NON-NLS-1$ //$NON-NLS-2$
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
-		lblNewLabel.setForeground(Color.BLACK);
-		lblNewLabel.setBounds(40, 313, 225, 13);
-		getContentPane().add(lblNewLabel);
-		icon.setBounds(0, 0, 336, 340);
-		getContentPane().add(icon);
-		icon.setIcon(new ImageIcon("./icone.jpeg"));
-		lblNewLabel_1.setIcon(new ImageIcon("./icone.jpeg"));
-		lblNewLabel_1.setBounds(0, 336, 336, 127);
-		
-		getContentPane().add(lblNewLabel_1);
+		JLabel msgLbl1 = new JLabel("");
+		msgLbl1.setForeground(Color.RED);
+		msgLbl1.setBounds(144, 246, 121, 14);
+		getContentPane().add(msgLbl1);
 		eventTableModel = new DefaultTableModel(null, eventColumnNames);
 	}
+	
 }

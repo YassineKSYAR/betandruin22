@@ -179,7 +179,24 @@ public class DataAccess  {
 		db.getTransaction().commit();
 		return q;
 	}
+	
+	public Event createEvent(String eventDescription, Date date) {
+		System.out.println(">> DataAccess: createEvent=> Date = " + date + " description = " +
+				eventDescription);
+		Event event=new Event(30, eventDescription, date);
+		//event.setEventNumber(99);
 
+		/*if (event.doesEventExist()) throw new EventAlreadyExist(
+				ResourceBundle.getBundle("Etiquetas").getString("ErrorEventAlreadyExist"));*/
+
+		db.getTransaction().begin();
+
+		db.persist(event);
+
+		db.getTransaction().commit();
+		System.out.println("Event Added to Database");
+		return event;
+	}
 	/**
 	 * This method retrieves from the database the events of a given date 
 	 * 

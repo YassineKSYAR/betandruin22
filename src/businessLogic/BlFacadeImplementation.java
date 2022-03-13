@@ -11,6 +11,7 @@ import configuration.ConfigXML;
 import dataAccess.DataAccess;
 import domain.Event;
 import domain.Question;
+import exceptions.EventAlreadyExist;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 
@@ -60,7 +61,7 @@ public class BlFacadeImplementation implements BlFacade {
 			throws EventFinished, QuestionAlreadyExist {
 
 		//The minimum bid must be greater than 0
-		dbManager.open(false);
+		dbManager.open(true);
 		Question qry = null;
 
 		if (new Date().compareTo(event.getEventDate()) > 0)
@@ -70,6 +71,15 @@ public class BlFacadeImplementation implements BlFacade {
 		qry = dbManager.createQuestion(event, question, betMinimum,fee);		
 		dbManager.close();
 		return qry;
+	}
+	
+	public Event createEvent(String eventDescription, Date date) {
+		dbManager.open(false);
+		Event ev = null;
+		
+		ev = dbManager.createEvent(eventDescription, date);		
+		dbManager.close();
+		return ev;
 	}
 
 	/**
