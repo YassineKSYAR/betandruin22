@@ -136,3 +136,26 @@ Type domain.Question is not enhanced.
 [2022-03-14 00:11:35 #7 type] 
 Type domain.Event is not enhanced.
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-14 00:31:24 #1 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\Register.odb' is opened by 23248@LAPTOP-9GAIOTJ7
+
+[2022-03-14 00:31:24 #2 store] 
+Configuration path: ?
+
+[2022-03-14 00:31:24 #3 type] 
+Type domain.Users is not enhanced.
+
+[2022-03-14 00:31:24 #4 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\bets.temp' is opened by 23248@LAPTOP-9GAIOTJ7
+
+[2022-03-14 00:31:24 #5 store] 
+Configuration path: ?
+
+[2022-03-14 00:31:24 #6 type] 
+Type domain.Question is not enhanced.
+
+[2022-03-14 00:31:24 #7 type] 
+Type domain.Event is not enhanced.
+

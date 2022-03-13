@@ -164,6 +164,12 @@ public class CreateEvent extends JFrame {
 		close.setBackground(Color.BLACK);
 		close.setBounds(241, 408, 85, 21);
 		getContentPane().add(close);
+		close.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+			}
+		});
 		
 		JLabel EventLbl = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("CreateEvent.EventLbl.text")); //$NON-NLS-1$ //$NON-NLS-2$
 		EventLbl.setBounds(40, 246, 71, 14);

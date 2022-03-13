@@ -1,6 +1,7 @@
 package dataAccess;
 
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -192,7 +193,7 @@ public class DataAccess  {
 			eventNumbers.add(ev.getEventNumber());
 		}
 		Collections.sort(eventNumbers);
-		int eventNumber = eventNumbers.get(eventNumbers.size()) + 1;
+		int eventNumber = eventNumbers.get(eventNumbers.size()-1) + 1;
 		Event event=new Event(eventNumber, eventDescription, date);
 		//event.setEventNumber(99);
 
