@@ -159,3 +159,101 @@ Type domain.Question is not enhanced.
 [2022-03-14 00:31:24 #7 type] 
 Type domain.Event is not enhanced.
 
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-14 00:32:33 #1 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\Register.odb' is opened by 7944@LAPTOP-9GAIOTJ7
+
+[2022-03-14 00:32:33 #2 store] 
+Configuration path: ?
+
+[2022-03-14 00:32:33 #3 type] 
+Type domain.Users is not enhanced.
+
+[2022-03-14 00:32:33 #4 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\bets.temp' is opened by 7944@LAPTOP-9GAIOTJ7
+
+[2022-03-14 00:32:33 #5 store] 
+Configuration path: ?
+
+[2022-03-14 00:32:33 #6 type] 
+Type domain.Question is not enhanced.
+
+[2022-03-14 00:32:33 #7 type] 
+Type domain.Event is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-14 00:33:24 #1 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\Register.odb' is opened by 20572@LAPTOP-9GAIOTJ7
+
+[2022-03-14 00:33:24 #2 store] 
+Configuration path: ?
+
+[2022-03-14 00:33:24 #3 type] 
+Type domain.Users is not enhanced.
+
+[2022-03-14 00:33:24 #4 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\bets.temp' is opened by 20572@LAPTOP-9GAIOTJ7
+
+[2022-03-14 00:33:24 #5 store] 
+Configuration path: ?
+
+[2022-03-14 00:33:24 #6 type] 
+Type domain.Question is not enhanced.
+
+[2022-03-14 00:33:24 #7 type] 
+Type domain.Event is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-14 00:34:53 #1 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\Register.odb' is opened by 6520@LAPTOP-9GAIOTJ7
+
+[2022-03-14 00:34:53 #2 store] 
+Configuration path: ?
+
+[2022-03-14 00:34:53 #3 type] 
+Type domain.Users is not enhanced.
+
+[2022-03-14 00:34:53 #4 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\bets.temp' has been recovered (tr. 1-5)
+
+[2022-03-14 00:34:53 #5 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\bets.temp' is opened by 6520@LAPTOP-9GAIOTJ7
+
+[2022-03-14 00:34:53 #6 store] 
+Configuration path: ?
+
+[2022-03-14 00:34:53 #7 type] 
+Type domain.Question is not enhanced.
+
+[2022-03-14 00:34:53 #8 type] 
+Type domain.Event is not enhanced.
+
+------------------------------------------------------------------------------------------------------------------------
+
+[2022-03-14 00:35:26 #1 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\Register.odb' is opened by 5772@LAPTOP-9GAIOTJ7
+
+[2022-03-14 00:35:26 #2 store] 
+Configuration path: ?
+
+[2022-03-14 00:35:26 #3 type] 
+Type domain.Users is not enhanced.
+
+[2022-03-14 00:35:26 #4 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\bets.temp' has been recovered (tr. 6-6)
+
+[2022-03-14 00:35:26 #5 store] 
+Database 'C:\Users\hejba\Desktop\betandruin22\db\bets.temp' is opened by 5772@LAPTOP-9GAIOTJ7
+
+[2022-03-14 00:35:26 #6 store] 
+Configuration path: ?
+
+[2022-03-14 00:35:26 #7 type] 
+Type domain.Question is not enhanced.
+
+[2022-03-14 00:35:26 #8 type] 
+Type domain.Event is not enhanced.
+
