@@ -9,6 +9,6 @@
 		</accessrules>
 	</classpathentry>
 	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="C:/Users/d/Desktop/betandruin22/resources/objectdb.jar"/>
+	<classpathentry kind="lib" path="C:/Users/hejba/Desktop/betandruin22/resources/objectdb.jar" sourcepath="resources/objectdb.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -156,7 +156,7 @@ public class CreateEvent extends JFrame {
 		});
 		createEventBtn.setBackground(Color.BLACK);
 		createEventBtn.setForeground(Color.WHITE);
-		createEventBtn.setBounds(130, 408, 85, 21);
+		createEventBtn.setBounds(40, 408, 85, 21);
 		getContentPane().add(createEventBtn);
 		
 		JButton close = new JButton(ResourceBundle.getBundle("Etiquetas").getString("CreateEvent.btnNewButton_1.text")); //$NON-NLS-1$ //$NON-NLS-2$

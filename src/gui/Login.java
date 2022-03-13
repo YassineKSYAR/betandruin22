@@ -9,11 +9,11 @@ import javax.swing.border.EmptyBorder;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
-import Users.User;
 import businessLogic.BlFacade;
 import businessLogic.BlFacadeImplementation;
 import configuration.ConfigXML;
 import dataAccess.RegisterDb;
+import domain.Users;
 
 import java.awt.Color;
 import javax.swing.JTextField;
@@ -104,9 +104,9 @@ public class Login extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegisterDb dataManager = new RegisterDb();
-				List<User> UserList = dataManager.getUser();
+				List<Users> UserList = dataManager.getUser();
 				System.out.println("Database content:");
-				for (User p : UserList) {
+				for (Users p : UserList) {
 					if(emailL.getText().equals(p.getEmail()) && passwordL.getText().equals(p.getPassword()) && p.getIsAdmin()){
 						MainGUI initWindow = new MainGUI();
 						BlFacade businessLogic;

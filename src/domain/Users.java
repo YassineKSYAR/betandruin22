@@ -1,10 +1,10 @@
-package Users;
+package domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class Users {
 	@Id
 	private String fname;
 	private String lname;
@@ -17,7 +17,7 @@ public class User {
 		this.password=password;
 	}*/
 	
-	public User(String fname,String lname,String email,String password) {
+	public Users(String fname,String lname,String email,String password) {
 		this.fname=fname;
 		this.lname=lname;
 		this.email=email;

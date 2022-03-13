@@ -7,9 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import Users.User;
 import dataAccess.RegisterDb;
-
+import domain.Users;
 
 import javax.swing.JTextField;
 import java.awt.Color;
@@ -155,9 +154,9 @@ public class Register extends JFrame {
 		SignUpButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				RegisterDb dataManagers = new RegisterDb();
-				List<User> UserList = dataManagers.getUser();
+				List<Users> UserList = dataManagers.getUser();
 				System.out.println("Database content:");
-				for (User p : UserList) {
+				for (Users p : UserList) {
 					if(emailS.getText().equals(p.getEmail()) && passwordS.getText().equals(p.getPassword())&&nameS.getText().equals(p.getFname()) &&lnameS.getText().equals(p.getLname())){
 						haveAcc.setText("User exist!!");
 						}
