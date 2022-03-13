@@ -183,7 +183,17 @@ public class DataAccess  {
 	public Event createEvent(String eventDescription, Date date) {
 		System.out.println(">> DataAccess: createEvent=> Date = " + date + " description = " +
 				eventDescription);
-		Event event=new Event(30, eventDescription, date);
+		Vector<Integer> eventNumbers = new Vector<Integer>();
+		TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev", 
+				Event.class);
+		List<Event> events = query.getResultList();
+		for (Event ev:events){
+			System.out.println(ev.toString());
+			eventNumbers.add(ev.getEventNumber());
+		}
+		Collections.sort(eventNumbers);
+		int eventNumber = eventNumbers.get(eventNumbers.size()) + 1;
+		Event event=new Event(eventNumber, eventDescription, date);
 		//event.setEventNumber(99);
 
 		/*if (event.doesEventExist()) throw new EventAlreadyExist(
