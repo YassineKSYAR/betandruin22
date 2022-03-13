@@ -11,3 +11,11 @@ In order to Complete the requirements of the first itteration we had to creat ne
 3)-In package "exceptions" we add event already exist exception
 4)-In package "gui" we created Login,Registre,Createevent and setfee features
 
+If the User is an admin, there are three ways:
+Browse events and related questions to event,or create a new event or create question for a certain event with the option to set a fee
+
+
+
+
+
+
