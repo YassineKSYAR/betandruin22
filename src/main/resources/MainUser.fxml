@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="268.0" prefWidth="334.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.MainUserController">
+    <children>
+        <Label fx:id="selectOptionLbl" layoutX="103.0" layoutY="37.0" text="%SelectUseCase" />
+        <Button fx:id="MakeBet" layoutX="62.0" layoutY="119.0" mnemonicParsing="false" onAction="#MakeBet" prefHeight="26.0" prefWidth="181.0" text="Make a Bet" />
+      <Button fx:id="depMoney" layoutX="62.0" layoutY="165.0" mnemonicParsing="false" onAction="#ondepMoeny" prefHeight="25.0" prefWidth="181.0" text="Deposit Moeny" />
+      <Button fx:id="removeBetBtn" layoutX="61.0" layoutY="211.0" mnemonicParsing="false" onAction="#onRemoveBet" prefHeight="26.0" prefWidth="182.0" text="Remove a Bet" />
+
+    </children>
+</AnchorPane>
