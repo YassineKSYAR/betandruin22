@@ -227,7 +227,7 @@ public class MakeBetController implements Controller {
     @FXML
     void onBet(ActionEvent event) {
         Results results=tblResults.getSelectionModel().getSelectedItem();
-        System.out.println(mainUser.getUser().getMoney());
+        System.out.println(businessLogic.getMony(mainUser.user).get(0).getMoney());
         float money=businessLogic.getMony(mainUser.getUser()).get(0).getMoney();
         if((int)money>=((int)amountInpute.getValue())) {
             businessLogic.deleteMoeny(mainUser.user, (int) amountInpute.getValue());

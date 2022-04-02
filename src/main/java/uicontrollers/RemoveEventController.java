@@ -29,6 +29,7 @@ public class RemoveEventController implements Controller{
     private MainGUI mainGUI;
 
     private BlFacade businessLogic;
+    MainUser mainUser;
 
     @FXML
     private Button CloseBtn;
@@ -173,6 +174,7 @@ public class RemoveEventController implements Controller{
 
     @Override
     public void setMainApp(MainUser mainUser) {
+        this.mainUser=mainUser;
 
     }
 

@@ -49,6 +49,7 @@ public class MainUserController implements Controller{
     @FXML
     void ondepMoeny(ActionEvent event) {
         mainUser.showDepMoeny();
+        System.out.println(mainUser.getUser());
     }
 
     @FXML

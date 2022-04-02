@@ -343,7 +343,7 @@ public class DataAccess  {
 
 	public List<User> getMony(User user) {
 
-			TypedQuery<User> q1 = db.createQuery("SELECT u FROM User u",
+			TypedQuery<User> q1 = db.createQuery("SELECT u from User u where u.idUser="+user.getId(),
 					User.class);
 			List<User> users = q1.getResultList();
 

@@ -28,6 +28,7 @@ public class CreateEventController implements Controller {
         }
 
         private MainGUI mainGUI;
+        private MainUser mainUser;
 
         @FXML
         private Button CloseBtn;
@@ -162,6 +163,7 @@ public class CreateEventController implements Controller {
 
     @Override
     public void setMainApp(MainUser mainUser) {
+            this.mainUser=mainUser;
 
     }
 
