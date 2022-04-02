@@ -1,13 +1,6 @@
 	package dataAccess;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.ResourceBundle;
-import java.util.Vector;
+import java.util.*;
 
 import javax.persistence.*;
 
@@ -186,6 +179,59 @@ public class DataAccess  {
 		db.getTransaction().commit();
 		return q;
 	}
+
+	public void removeEventQuestions(Event event){
+		System.out.println(">> DataAccess: createQuestion=> event = " + event );
+
+		Event ev = db.find(Event.class, event.getEventNumber());
+
+		db.getTransaction().begin();
+		ev.removeQuestions();
+		db.persist(ev);
+		db.getTransaction().commit();
+	}
+
+		/////////////////////////////////////// Create event in database ////////////////////////////
+		public Event createEvent(Date date, String eventDescription)  {
+			System.out.println(">> DataAccess: createEvent=> Date = " + date + " description = " +
+					eventDescription);
+
+			Vector<Integer> eventNumbers = new Vector<Integer>();
+			TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev",
+					Event.class);
+			List<Event> events = query.getResultList();
+			for (Event ev:events){
+				System.out.println(ev.toString());
+				eventNumbers.add(ev.getEventNumber());
+			}
+			Collections.sort(eventNumbers);
+			int eventNumber = eventNumbers.get(eventNumbers.size() - 1) + 1;
+
+			Event event=new Event( eventNumber, eventDescription, date);
+
+		/*if (event.doesEventExist()) throw new EventAlreadyExist (
+				ResourceBundle.getBundle("Etiquetas").getString("ErrorEventAlreadyExist"));*/
+
+			db.getTransaction().begin();
+
+			db.persist(event);
+
+			db.getTransaction().commit();
+			System.out.println("Event Added to Database");
+			return event;
+		}
+
+		//////////////////////////////////////////////////Remove Event///////////////////////
+		public void removeEvent(Event event){
+			db.getTransaction().begin();
+			Event ev = db.find(Event.class, event.getEventNumber());
+
+			db.remove(ev);
+			db.getTransaction().commit();
+			System.out.println("object removed id:" + event.getEventNumber() + ", description:"+ event.getDescription());
+		}
+
+
 	public User createUser(String fname, String lname, String userName, String email, String password){
 
 		System.out.println(">> DataAccess: createUser=> fname = " + fname + " lnmae = " +

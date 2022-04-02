@@ -6,9 +6,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="237.0" prefWidth="334.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.MainGUIController">
    <children>
-      <Label fx:id="selectOptionLbl" layoutX="103.0" layoutY="37.0" text="%SelectUseCase" />
-      <Button fx:id="browseQuestionsBtn" layoutX="70.0" layoutY="75.0" mnemonicParsing="false" onAction="#browseQuestions" prefHeight="26.0" prefWidth="181.0" text="%BrowseQuestions" />
-      <Button fx:id="createQuestionBtn" layoutX="70.0" layoutY="126.0" mnemonicParsing="false" onAction="#createQuestion" prefHeight="26.0" prefWidth="181.0" text="%CreateQuestion" />
-      <Button fx:id="setfeeBtn" layoutX="69.0" layoutY="174.0" mnemonicParsing="false" onAction="#setFee" prefHeight="26.0" prefWidth="182.0" text="Set Fee" />
+      <Label fx:id="selectOptionLbl" layoutX="124.0" layoutY="14.0" text="%SelectUseCase" />
+      <Button fx:id="browseQuestionsBtn" layoutX="76.0" layoutY="42.0" mnemonicParsing="false" onAction="#browseQuestions" prefHeight="26.0" prefWidth="181.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="%BrowseQuestions" textFill="#d7d7d7" />
+      <Button fx:id="createQuestionBtn" layoutX="76.0" layoutY="74.0" mnemonicParsing="false" onAction="#createQuestion" prefHeight="26.0" prefWidth="181.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="%CreateQuestion" textFill="#d7d7d7" />
+      <Button fx:id="setfeeBtn" layoutX="76.0" layoutY="172.0" mnemonicParsing="false" onAction="#setFee" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Set Fee" textFill="#d0d0d0" />
+      <Button fx:id="createEventBtn" layoutX="76.0" layoutY="106.0" mnemonicParsing="false" onAction="#createEvent" prefHeight="25.0" prefWidth="181.0" style="-fx-background-radius: 20; -fx-background-color: black;" text="Create Event" textFill="#c9c6c6" />
+      <Button fx:id="removeEventBtn" layoutX="76.0" layoutY="140.0" mnemonicParsing="false" onAction="#onRemoveBtn" prefHeight="25.0" prefWidth="181.0" style="-fx-background-radius: 20; -fx-background-color: black;" text="Remove Event" textFill="#c5c5c5" />
    </children>
 </AnchorPane>

@@ -76,6 +76,35 @@ public class BlFacadeImplementation implements BlFacade {
 		return qry;
 	}
 
+	@WebMethod
+	public Event createEvent(Date date, String eventDescription) {
+
+		//The minimum bid must be greater than 0
+		dbManager.open(false);
+		Event ev = null;
+
+		/*if (new Date().compareTo(event.getEventDate()) > 0)
+			throw new EventFinished(ResourceBundle.getBundle("Etiquetas").
+					getString("ErrorEventHasFinished"));*/
+		ev = dbManager.createEvent(date, eventDescription);
+		dbManager.close();
+		return ev;
+	}
+
+	@WebMethod
+	public void removeEvent(Event event){
+		dbManager.open(false);
+		dbManager.removeEvent(event);
+		dbManager.close();
+	}
+
+	@WebMethod
+	public void removeEventQuestions(Event event){
+		dbManager.open(false);
+		dbManager.removeEventQuestions(event);
+		dbManager.close();
+	}
+
 
 	@WebMethod
 	public User createU(String fname, String lname, String userName, String email, String password){

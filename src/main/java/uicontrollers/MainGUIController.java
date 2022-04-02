@@ -23,6 +23,14 @@ public class MainGUIController implements Controller{
     @FXML
     private Button createQuestionBtn;
 
+    ///////////////////////////////////////////////
+    @FXML
+    public Button removeEventBtn;
+
+    @FXML
+    private Button createEventBtn;
+    /////////////////////////////////////////////
+
 
     @FXML
     private ResourceBundle resources;
@@ -45,6 +53,15 @@ public class MainGUIController implements Controller{
 
     @FXML
     void setFee(ActionEvent event) {mainGUI.showSetFee();}
+
+    ////////////////////////////////////////////////////////
+    @FXML
+    void createEvent(ActionEvent event){ mainGUI.showCreateEvent(); }
+    //////////////////////////////////////////////////////
+
+    @FXML
+    void onRemoveBtn(ActionEvent event){ mainGUI.showRemoveEvent(); }
+
 
 
     @FXML

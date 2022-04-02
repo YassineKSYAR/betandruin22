@@ -51,6 +51,15 @@ public interface BlFacade  {
 	 List<Bet> getBet(User user);
 	@WebMethod List<User>  getMony(User user);
 
+	@WebMethod
+	Event createEvent(Date date, String eventDescription );
+
+	@WebMethod
+	public void removeEvent(Event event);
+
+	@WebMethod
+	public void removeEventQuestions(Event event);
+
 
 	/**
 	 * This method retrieves all the events of a given date 

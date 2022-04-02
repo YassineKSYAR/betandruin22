@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.RemoveEventController">
+    <children>
+        <DatePicker fx:id="datePicker" layoutX="213.0" layoutY="40.0" />
+        <TableView fx:id="tblEvent" layoutX="133.0" layoutY="87.0" prefHeight="146.0" prefWidth="333.0">
+            <columns>
+                <TableColumn fx:id="ec1" prefWidth="75.0" text="Id" />
+                <TableColumn fx:id="ec2" prefWidth="256.6666259765625" text="Event" />
+            </columns>
+        </TableView>
+        <Button fx:id="CloseBtn" layoutX="476.0" layoutY="360.0" mnemonicParsing="false" onAction="#onCloseBtn" prefHeight="25.0" prefWidth="109.0" text="Back" />
+        <Button fx:id="RemoveBtn" layoutX="245.0" layoutY="298.0" mnemonicParsing="false" onAction="#onRemoveBtn" prefHeight="25.0" prefWidth="109.0" text="Remove" />
+        <Label fx:id="lblMessage" alignment="CENTER" layoutX="132.0" layoutY="261.0" prefHeight="17.0" prefWidth="333.0" textFill="#00a308" />
+    </children>
+</AnchorPane>

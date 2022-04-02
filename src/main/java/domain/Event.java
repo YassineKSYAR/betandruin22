@@ -96,6 +96,10 @@ public class Event implements Serializable {
 		return q;
 	}
 
+	public void removeQuestions(){
+		questions.clear();
+	}
+
 
 	/**
 	 * This method checks if the question already exists for that event

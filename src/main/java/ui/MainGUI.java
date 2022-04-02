@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class MainGUI {
 
-  private Window mainLag, createQuestionLag, browseQuestionsLag,setFee;
+  private Window mainLag, createQuestionLag, browseQuestionsLag,setFee,createEventLag, removeEventLag;
   private User user;
   private BlFacade businessLogic;
   private Stage stage;
@@ -58,8 +58,11 @@ public class MainGUI {
         return new CreateQuestionController(businessLogic);
       } if(controllerClass == SetFeeController.class){
         return new SetFeeController(businessLogic);
-      }
-      else {
+      }if(controllerClass == CreateEventController.class){
+        return new CreateEventController(businessLogic);
+      }if(controllerClass == RemoveEventController.class){
+        return new RemoveEventController(businessLogic);
+      } else {
         // default behavior for controllerFactory:
         try {
           return controllerClass.getDeclaredConstructor().newInstance();
@@ -86,6 +89,11 @@ public class MainGUI {
     createQuestionLag = load("/CreateQuestion.fxml");
     setFee=load("/SetFeeGUI.fxml");
 
+    ///////////////////////////////////////////////////////////
+    createEventLag = load("/CreateEvent.fxml");
+    removeEventLag = load("/RemoveEvent.fxml");
+    //////////////////////////////////////////////////////////
+
     showMain();
 
   }
@@ -110,6 +118,11 @@ public class MainGUI {
   public void showSetFee() {
     setupScene(setFee.ui, "SetFee", 550, 400);
   }
+
+  /////////////////////////////////////////////////////////////////////////////
+  public void showCreateEvent(){ setupScene(createEventLag.ui, "CreateEvent", 600,500); }
+
+  public void showRemoveEvent(){ setupScene(removeEventLag.ui, "RemoveEvent", 610,500); }
 
   private void setupScene(Parent ui, String title, int width, int height) {
     if (scene == null){

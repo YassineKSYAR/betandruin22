@@ -228,10 +228,10 @@ public class MakeBetController implements Controller {
     void onBet(ActionEvent event) {
         Results results=tblResults.getSelectionModel().getSelectedItem();
         System.out.println(mainUser.getUser().getMoney());
-        float money=businessLogic.getMony(mainUser.user).get(0).getMoney();
+        float money=businessLogic.getMony(mainUser.getUser()).get(0).getMoney();
         if((int)money>=((int)amountInpute.getValue())) {
             businessLogic.deleteMoeny(mainUser.user, (int) amountInpute.getValue());
-            businessLogic.createBet(results.getIdR(), (Integer) amountInpute.getValue(), results.getFee(), mainUser.getUser().getId());
+            businessLogic.createBet(results.getIdR(), (int) amountInpute.getValue(), results.getFee(), mainUser.getUser().getId());
             betCr.setText("Your bet has been created");
             moenyIns.setText("");
             labelBalnce.setText("");
@@ -248,7 +248,7 @@ public class MakeBetController implements Controller {
     @FXML
     void onShowBalance(ActionEvent event) {
         labelBalnce.setText("My balance ");
-        balanceInp.setText(""+businessLogic.getMony(mainUser.user).get(0).getMoney());
+        balanceInp.setText(""+businessLogic.getMony(mainUser.getUser()).get(0).getMoney());
 
     }
 
