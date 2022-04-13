@@ -103,11 +103,11 @@ public class MainUser {
 
 
     public void showMain(){
-        setupScene(mainLag.ui, "MainTitle", 334, 300);
+        setupScene(mainLag.ui, "MainTitle", 393, 289);
     }
 
     public void showMakeBet() {
-        setupScene(makeBet.ui, "MakeBet", 1058, 667);
+        setupScene(makeBet.ui, "MakeBet", 1058, 680);
     }
     public void showDepMoeny(){
         setupScene(depMoeny.ui, "DepositMoeny", 600, 400);}

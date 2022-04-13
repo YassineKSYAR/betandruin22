@@ -104,7 +104,7 @@ public class MainGUI {
 
 
   public void showMain(){
-    setupScene(mainLag.ui, "MainTitle", 334, 250);
+    setupScene(mainLag.ui, "MainTitle", 393, 289);
   }
 
   public void showBrowseQuestions() {
