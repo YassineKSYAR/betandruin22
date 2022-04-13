@@ -116,7 +116,7 @@ public class MainGUI {
   }
 
   public void showSetFee() {
-    setupScene(setFee.ui, "SetFee", 550, 400);
+    setupScene(setFee.ui, "SetFee", 990, 571);
   }
 
   /////////////////////////////////////////////////////////////////////////////

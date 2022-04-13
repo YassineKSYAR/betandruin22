@@ -100,7 +100,7 @@ public class Home {
     }
 
     public void showLogin() {
-        setupScene(login.ui, "Login", 696, 613);
+        setupScene(login.ui, "Login", 590, 400);
     }
 
     public void showRegister() {
