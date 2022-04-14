@@ -1,8 +1,6 @@
 package ui;
 
 import businessLogic.BlFacade;
-import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -40,6 +38,7 @@ public class RegisterGUI  {
         stage.setTitle("Register");
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
 
 
     }

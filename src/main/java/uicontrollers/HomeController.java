@@ -1,14 +1,11 @@
 package uicontrollers;
 
 import businessLogic.BlFacade;
-import businessLogic.BlFacadeImplementation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
 import ui.*;
 
-import static java.lang.System.exit;
 
 
 public class HomeController implements Controller{

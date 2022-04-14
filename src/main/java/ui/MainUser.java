@@ -113,7 +113,7 @@ public class MainUser {
         setupScene(depMoeny.ui, "DepositMoeny", 600, 400);}
 
     public void showRemoveBet(){
-        setupScene(removeBet.ui, "RemoveBet", 1504, 584);}
+        setupScene(removeBet.ui, "RemoveBet", 1600, 584);}
 
 
 
@@ -129,6 +129,7 @@ public class MainUser {
         stage.setTitle(ResourceBundle.getBundle("Etiquetas",Locale.getDefault()).getString(title));
         scene.setRoot(ui);
         stage.show();
+        stage.setResizable(false);
     }
 
 //  public static void main(String[] args) {

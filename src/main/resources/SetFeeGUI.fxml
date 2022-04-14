@@ -34,20 +34,26 @@
         <Label layoutX="232.0" layoutY="49.0" text="Events" />
         <Label layoutX="358.0" layoutY="49.0" text="  " />
         <Label layoutX="576.0" layoutY="49.0" text="SelectedEvent" />
-        <Button fx:id="btnClose" layoutX="777.0" layoutY="465.0" mnemonicParsing="false" onAction="#closeClick" text="Close" />
-      <Label fx:id="resultLab" layoutX="42.0" layoutY="358.0" prefHeight="18.0" prefWidth="64.0" text="Result :">
+        <Button fx:id="btnClose" layoutX="777.0" layoutY="465.0" mnemonicParsing="false" onAction="#closeClick" prefHeight="32.0" prefWidth="74.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Close" textFill="#00859d">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
+      <Label fx:id="resultLab" layoutX="267.0" layoutY="358.0" prefHeight="18.0" prefWidth="64.0" text="Result :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="resultF" layoutX="106.0" layoutY="355.0" prefHeight="26.0" prefWidth="197.0" />
-      <Label fx:id="feeLab" layoutX="58.0" layoutY="414.0" text="Fee :">
+      <TextField fx:id="resultF" layoutX="378.0" layoutY="355.0" prefHeight="26.0" prefWidth="197.0" />
+      <Label fx:id="feeLab" layoutX="284.0" layoutY="414.0" text="Fee :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="feeF" layoutX="105.0" layoutY="411.0" prefHeight="26.0" prefWidth="198.0" />
-      <Button fx:id="setfeeBtn" layoutX="143.0" layoutY="464.0" mnemonicParsing="false" onAction="#onSetFee" prefHeight="26.0" prefWidth="111.0" text="Apply" />
+      <TextField fx:id="feeF" layoutX="378.0" layoutY="411.0" prefHeight="26.0" prefWidth="198.0" />
+      <Button fx:id="setfeeBtn" layoutX="421.0" layoutY="465.0" mnemonicParsing="false" onAction="#onSetFee" prefHeight="26.0" prefWidth="111.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Apply" textFill="#00859d">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
       <Label fx:id="setFeeText" alignment="CENTER" layoutX="186.0" layoutY="14.0" prefHeight="18.0" prefWidth="622.0" textFill="GREEN">
          <font>
             <Font name="System Bold" size="14.0" />

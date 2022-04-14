@@ -135,6 +135,7 @@ public class MainGUI {
     stage.setTitle(ResourceBundle.getBundle("Etiquetas",Locale.getDefault()).getString(title));
     scene.setRoot(ui);
     stage.show();
+    stage.setResizable(false);
   }
 
   public void setUser(User user) {

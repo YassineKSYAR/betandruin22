@@ -9,7 +9,10 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.DepMoneyController">
    <children>
       <TextField fx:id="depMoneyF" layoutX="225.0" layoutY="187.0" />
-      <Button fx:id="depMoenyBtn" layoutX="338.0" layoutY="258.0" mnemonicParsing="false" onAction="#onSetMoeny" prefHeight="26.0" prefWidth="74.0" text="Confirm" />
+      <Button fx:id="depMoenyBtn" layoutX="338.0" layoutY="258.0" mnemonicParsing="false" onAction="#onSetMoeny" prefHeight="32.0" prefWidth="101.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Confirm" textFill="#008d9a">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
       <Label alignment="CENTER" layoutX="225.0" layoutY="130.0" prefHeight="18.0" prefWidth="150.0" text="Enter the amount">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -19,6 +22,9 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
-      <Button fx:id="closeBtn" layoutX="189.0" layoutY="258.0" mnemonicParsing="false" onAction="#closeClick" prefHeight="26.0" prefWidth="74.0" text="Back" />
+      <Button fx:id="closeBtn" layoutX="189.0" layoutY="258.0" mnemonicParsing="false" onAction="#closeClick" prefHeight="32.0" prefWidth="83.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Back" textFill="#008d9a">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
    </children>
 </AnchorPane>

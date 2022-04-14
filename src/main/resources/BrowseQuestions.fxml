@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="405.0" prefWidth="992.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.BrowseQuestionsController">
     <children>
@@ -32,6 +33,9 @@
         <Label layoutX="232.0" layoutY="49.0" text="%Events" />
         <Label layoutX="358.0" layoutY="49.0" text="  " />
         <Label layoutX="576.0" layoutY="49.0" text="%SelectedEvent" />
-        <Button fx:id="btnClose" layoutX="535.0" layoutY="332.0" mnemonicParsing="false" onAction="#closeClick" text="%Back" />
+        <Button fx:id="btnClose" layoutX="514.0" layoutY="326.0" mnemonicParsing="false" onAction="#closeClick" prefHeight="36.0" prefWidth="124.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="%Back" textFill="#00a1ac">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font></Button>
     </children>
 </AnchorPane>

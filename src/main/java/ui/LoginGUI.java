@@ -1,17 +1,10 @@
 package ui;
 
 import businessLogic.BlFacade;
-import businessLogic.BlFacadeImplementation;
-import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.Window;
-import org.kordamp.bootstrapfx.BootstrapFX;
-import uicontrollers.BrowseQuestionsController;
-import uicontrollers.LoginController;
 
 import java.io.IOException;
 
@@ -49,6 +42,7 @@ public class LoginGUI {
         stage.setTitle("Login");
         stage.setScene(scene);
         stage.show();
+        stage.setResizable(false);
 
 
     }
