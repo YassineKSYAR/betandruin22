@@ -208,12 +208,13 @@ public class BlFacadeImplementation implements BlFacade {
 	}
 
 	@WebMethod
-	public List<User> getUser(){
+	public User getUser(String userName,String password){
+
 		dbManager.open(false);
 		System.out.println(">> DataAccess: getUsers");
-		List<User> users = dbManager.getUsers();
+		User user = dbManager.getUsers(userName,password);
 		dbManager.close();
-		return users;
+		return user;
 	}
 
 	@WebMethod

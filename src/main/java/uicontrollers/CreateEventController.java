@@ -28,13 +28,7 @@ public class CreateEventController implements Controller {
         }
 
         private MainGUI mainGUI;
-        private MainUser mainUser;
 
-        @FXML
-        private Button CloseBtn;
-
-        @FXML
-        private Button createBtn;
 
         @FXML
         private DatePicker datePicker;
@@ -163,7 +157,7 @@ public class CreateEventController implements Controller {
 
     @Override
     public void setMainApp(MainUser mainUser) {
-            this.mainUser=mainUser;
+
 
     }
 

@@ -65,6 +65,7 @@ public class MainUser {
                 return new DepMoneyController(businessLogic);
             }
             if(controllerClass == RemoveBetController.class){
+
                 return new RemoveBetController(businessLogic);
             }
             else {

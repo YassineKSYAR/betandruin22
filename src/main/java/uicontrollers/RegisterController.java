@@ -15,39 +15,31 @@ import java.io.IOException;
 public class RegisterController implements Controller {
     private BlFacade businessLogic;
 
-    private MainUser mainUser;
-    private MainGUI mainGUI;
+
     private Home home;
 
     @FXML
     private PasswordField cpasswordF;
 
-    @FXML
-    private Label cpasswordLab;
+
 
     @FXML
     private TextField emailF;
 
-    @FXML
-    private Label emailLab;
+
 
     @FXML
     private TextField fnameF;
 
-    @FXML
-    private Label fnameLab;
 
     @FXML
     private TextField lnameF;
 
-    @FXML
-    private Label lnameLab;
+
 
     @FXML
     private PasswordField passwordF;
 
-    @FXML
-    private Label passwordLab;
 
     @FXML
     private Button registerBtn;
@@ -55,8 +47,6 @@ public class RegisterController implements Controller {
     @FXML
     private TextField userNameF;
 
-    @FXML
-    private Label userNameLab;
 
     @FXML
     private Label labelF;
@@ -97,12 +87,12 @@ public class RegisterController implements Controller {
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
-        this.mainGUI=mainGUI;
+
     }
 
     @Override
     public void setMainApp(MainUser mainUser) {
-        this.mainUser=mainUser;
+
 
     }
 

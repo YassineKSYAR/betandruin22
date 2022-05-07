@@ -41,6 +41,16 @@ public class User   {
 
     }
 
+    public User(User user) {
+        this.fname=user.fname;
+        this.lname=user.lname;
+        this.userName=user.userName;
+        this.email=user.email;
+        this.password=user.password;
+        this.money=user.money;
+        this.isAdmin=user.isAdmin;
+    }
+
     public void setAdmin(boolean admin) {
         isAdmin = admin;
     }

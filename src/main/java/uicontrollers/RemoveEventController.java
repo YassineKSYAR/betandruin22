@@ -16,7 +16,7 @@ import ui.MainUser;
 import utils.Dates;
 
 import java.time.LocalDate;
-import java.time.Month;
+
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.Date;
@@ -31,8 +31,7 @@ public class RemoveEventController implements Controller{
     private BlFacade businessLogic;
     MainUser mainUser;
 
-    @FXML
-    private Button CloseBtn;
+
 
     @FXML
     private TableColumn<Event, Integer> ec1;
@@ -40,8 +39,7 @@ public class RemoveEventController implements Controller{
     @FXML
     private TableColumn<Event, String> ec2;
 
-    @FXML
-    private Button RemoveBtn;
+
 
     @FXML
     private DatePicker datePicker;
@@ -49,11 +47,7 @@ public class RemoveEventController implements Controller{
     @FXML
     private TableView<Event> tblEvent;
 
-    LocalDate localDate;
 
-    private int day;
-    private Month month;
-    private int year;
 
     @FXML
     private Label lblMessage;

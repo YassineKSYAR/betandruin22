@@ -108,7 +108,8 @@ public class DataAccess  {
 			admin.setAdmin(true);
 			User user=new User("test","test","test","test","test");
 
-			Results r= new Results(11,3,"Atletico", 2.5F);
+			Results r1= new Results(11,3,"Atletico", 2.5F);
+			Results r2= new Results(11,4,"5", 2.5F);
 
 			db.persist(q1);
 			db.persist(q2);
@@ -141,7 +142,8 @@ public class DataAccess  {
 			db.persist(admin);
 			db.persist(user);
 
-			db.persist(r);
+			db.persist(r1);
+			db.persist(r2);
 
 			db.getTransaction().commit();
 			System.out.println("The database has been initialized");
@@ -333,12 +335,23 @@ public class DataAccess  {
 		}
 		return res;
 	}
-	public List<User> getUsers(){
+	public User getUsers(String userName,String password){
+		User user=new User();
 		System.out.println(">> DataAccess: getUsers");
-		TypedQuery<User> q1 = db.createQuery("SELECT u FROM User u",
+		TypedQuery<User> q1 = db.createQuery("SELECT u FROM User u where u.userName=?1 and u.password=?2",
 				User.class);
+		q1.setParameter(1, userName);
+		q1.setParameter(2, password);
 		List<User> users = q1.getResultList();
-		return users;
+		if(users.size()==0){
+			System.out.println(users);
+			return user;
+		}else {
+
+			return users.get(0);
+		}
+
+
 	}
 
 	public List<User> getMony(User user) {

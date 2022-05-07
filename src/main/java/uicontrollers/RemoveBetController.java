@@ -13,20 +13,20 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import ui.Home;
 import ui.MainGUI;
 import ui.MainUser;
+
+import javafx.scene.input.MouseEvent;
+
 import java.util.Date;
 import java.util.List;
 
-public class RemoveBetController implements Controller {
+public class RemoveBetController implements Controller{
     private MainUser mainUser;
-
-
-    @FXML
-    private Button showBetBtn;
-
 
     @FXML
     private TableColumn<MyBet, Float> betB;
 
+    @FXML
+    private Button removeBtn;
 
     @FXML
     private TableColumn<MyBet, Date> dateB;
@@ -58,21 +58,30 @@ public class RemoveBetController implements Controller {
 
 
     public RemoveBetController(BlFacade bl) {
-
         businessLogic = bl;
-
-
-
     }
+
+
 
     @FXML
     void closeClick (ActionEvent event) {
         mainUser.showMain();
+        removeSuc.setText("");
 
     }
 
+
     @FXML
-    void onShowBet(ActionEvent event) {
+    void onShowBet(MouseEvent event) {
+        tblBet.getItems().clear();
+            displayBets();
+
+
+    }
+
+
+
+    void  displayBets(){
         System.out.println(mainUser.getUser());
         List<Bet> bets=businessLogic.getBet(mainUser.getUser());
         for(Bet bet:bets){
@@ -99,13 +108,14 @@ public class RemoveBetController implements Controller {
                 betB.setCellValueFactory(new PropertyValueFactory<>("b"));
 
 
-
-
             }
         }
+        if(tblBet.getItems().size()>0){
+            removeBtn.setDisable(false);
+        }else {
+            removeBtn.setDisable(true);
+        }
 
-        showBetBtn.setVisible(false);
-        removeSuc.setText("");
 
     }
 
@@ -117,17 +127,15 @@ public class RemoveBetController implements Controller {
         long idBet=tblBet.getSelectionModel().getSelectedItem().getId();
         businessLogic.deleteBet(mainUser.user.getId(),idBet);
         tblBet.getItems().clear();
-        onShowBet(event);
-        removeSuc.setText("Your balance has been deleted");
-
-
+        removeSuc.setText("Your bet has been deleted");
+        displayBets();
+        if(tblBet.getItems().size()>0){
+            removeBtn.setDisable(false);
+        }else {
+            removeBtn.setDisable(true);
+        }
 
     }
-
-
-
-
-
 
 
     @Override
@@ -135,10 +143,9 @@ public class RemoveBetController implements Controller {
 
     }
 
-
     @Override
     public void setMainApp(MainUser mainUser) {
-        this.mainUser = mainUser;
+        this.mainUser=mainUser;
 
     }
 
@@ -146,7 +153,6 @@ public class RemoveBetController implements Controller {
     public void setHomeApp(Home home) {
 
     }
-
 }
 
 

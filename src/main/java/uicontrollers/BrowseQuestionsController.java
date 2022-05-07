@@ -1,6 +1,4 @@
 package uicontrollers;
-
-import java.net.URL;
 import java.time.*;
 import java.util.*;
 
@@ -21,14 +19,7 @@ import utils.Dates;
 
 public class BrowseQuestionsController implements Controller {
 
-  @FXML
-  private ResourceBundle resources;
 
-  @FXML
-  private URL location;
-
-  @FXML
-  private Button btnClose;
 
   @FXML
   private DatePicker datepicker;
@@ -53,8 +44,7 @@ public class BrowseQuestionsController implements Controller {
 
 
   private MainGUI mainGUI;
-  private MainUser mainUser;
-  private Home home;
+
 
   private List<LocalDate> holidays = new ArrayList<>();
 
@@ -168,13 +158,13 @@ public class BrowseQuestionsController implements Controller {
 
   @Override
     public void setMainApp(MainUser mainUser) {
-    this.mainUser=mainUser;
+
 
     }
 
   @Override
   public void setHomeApp(Home home) {
-    this.home=home;
+
 
   }
 

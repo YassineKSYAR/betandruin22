@@ -1,9 +1,8 @@
 package uicontrollers;
 
-import java.net.URL;
+
 import java.time.*;
 import java.util.*;
-
 import businessLogic.BlFacade;
 import domain.Event;
 import domain.Question;
@@ -14,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.skin.DatePickerSkin;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 import ui.Home;
 import ui.MainGUI;
@@ -22,25 +22,19 @@ import utils.Dates;
 
 public class MakeBetController implements Controller {
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button btnClose;
 
 
     @FXML
     private Label moenyIns;
     @FXML
     private Label betCr;
-    @FXML
-    private Label balanceInp;
+
 
     @FXML
     private Label labelBalnce;
+
+
+
 
 
 
@@ -80,14 +74,8 @@ public class MakeBetController implements Controller {
     @FXML
     private Button betBtn;
 
-    @FXML
-    private TextField betinput;
-
-
-
-    private MainGUI mainGUI;
     private MainUser mainUser;
-    private Home home;
+
 
     private List<LocalDate> holidays = new ArrayList<>();
 
@@ -196,9 +184,15 @@ public class MakeBetController implements Controller {
             if (newSelection != null) {
 
                 tblQuestions.getItems().clear();
+                tblResults.getItems().clear();
                 for (Question q : tblEvents.getSelectionModel().getSelectedItem().getQuestions()) {
                     tblQuestions.getItems().add(q);
                 }
+            }
+            if(tblResults.getItems().size()>0){
+                betBtn.setDisable(false);
+            }else {
+                betBtn.setDisable(true);
             }
 
 
@@ -218,6 +212,11 @@ public class MakeBetController implements Controller {
                     tblResults.getItems().add(r);
                 }
                 amountInpute.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory((int) q.getBetMinimum(),100000, (int) q.getBetMinimum()));
+                if(tblResults.getItems().size()>0){
+                    betBtn.setDisable(false);
+                }else {
+                    betBtn.setDisable(true);
+                }
             }
         });
     }
@@ -232,10 +231,9 @@ public class MakeBetController implements Controller {
             businessLogic.createBet(results.getIdR(), (int) amountInpute.getValue(), results.getFee(), mainUser.getUser().getId());
             betCr.setText("Your bet has been created");
             moenyIns.setText("");
-            labelBalnce.setText("");
-            balanceInp.setText("");
-            labelBalnce.setText("My balance ");
-            balanceInp.setText(""+businessLogic.getMony(mainUser.user).get(0).getMoney());
+            labelBalnce.setText(""+businessLogic.getMony(mainUser.user).get(0).getMoney());
+
+
         }else {
             moenyIns.setText("Insufficient balance");
             betCr.setText("");
@@ -243,16 +241,18 @@ public class MakeBetController implements Controller {
     }
 
 
+
     @FXML
-    void onShowBalance(ActionEvent event) {
-        labelBalnce.setText("My balance ");
-        balanceInp.setText(""+businessLogic.getMony(mainUser.getUser()).get(0).getMoney());
+    void onShoBln(MouseEvent event) {
+
+            labelBalnce.setText(""+businessLogic.getMony(mainUser.user).get(0).getMoney());
+
 
     }
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
-        this.mainGUI = mainGUI;
+
     }
 
     @Override
@@ -263,7 +263,7 @@ public class MakeBetController implements Controller {
 
     @Override
     public void setHomeApp(Home home) {
-        this.home=home;
+
     }
 
 

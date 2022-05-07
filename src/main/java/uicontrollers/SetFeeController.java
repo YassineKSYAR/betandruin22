@@ -16,7 +16,6 @@ import ui.MainGUI;
 import ui.MainUser;
 import utils.Dates;
 
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.*;
@@ -24,14 +23,6 @@ import java.util.*;
 public class SetFeeController implements Controller  {
 
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
-    private Button btnClose;
 
     @FXML
     private DatePicker datepicker;
@@ -59,22 +50,17 @@ public class SetFeeController implements Controller  {
     @FXML
     private TextField resultF;
 
-    @FXML
-    private Label resultLab;
 
-    @FXML
-    private Button setfeeBtn;
     @FXML
     private TextField feeF;
 
     @FXML
     private Label setFeeText;
 
-    @FXML
-    private Label feeLab;
+
 
     private MainGUI mainGUI;
-    private Home home;
+
 
     private List<LocalDate> holidays = new ArrayList<>();
 
@@ -239,7 +225,7 @@ public class SetFeeController implements Controller  {
 
     @Override
     public void setHomeApp(Home home) {
-        this.home=home;
+
     }
 
 

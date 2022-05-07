@@ -14,31 +14,21 @@ import ui.Home;
 import ui.MainGUI;
 import ui.MainUser;
 
-import java.util.List;
-
 public class LoginController implements Controller{
 
     private BlFacade businessLogic;
-    private MainGUI mainGUI;
-    private MainUser mainUser;
-    private Home home;
-
-
-
     @FXML
     private Button LoginBtn;
 
     @FXML
     private PasswordField passwordF;
 
-    @FXML
-    private Label passwordLab;
+
 
     @FXML
     private TextField userNameF;
 
-    @FXML
-    private Label userNameLab;
+
 
     @FXML
     private Label labelFu;
@@ -67,51 +57,54 @@ public class LoginController implements Controller{
 
 
 
-    public List<User> LoginU(){
+    public User LoginU(){
 
-        List<User> users=businessLogic.getUser();
+        User user=businessLogic.getUser(userNameF.getText(),passwordF.getText());
 
         System.out.println("Database content");
         try{
-        for (User  u:users){
-            if((u.getUserName().equals(userNameF.getText())||u.getEmail().equals(userNameF.getText()))& u.getPassword().equals(passwordF.getText())&u.getAdmin().equals(false)){
-                Stage stage =(Stage) LoginBtn.getScene().getWindow();
-                stage.close();
-              new MainUser(businessLogic,u);
+            if(user.getId()!=0) {
+                if ((user.getUserName().equals(userNameF.getText()) || user.getEmail().equals(userNameF.getText())) & user.getPassword().equals(passwordF.getText()) & user.getAdmin().equals(false)) {
+                    Stage stage = (Stage) LoginBtn.getScene().getWindow();
+                    stage.close();
+                    new MainUser(businessLogic, user);
 
-            }else if((u.getUserName().equals(userNameF.getText())||u.getEmail().equals(userNameF.getText()))& u.getPassword().equals(passwordF.getText())& u.getAdmin().equals(true)){
-                Stage stage =(Stage) LoginBtn.getScene().getWindow();
-                stage.close();
-                new MainGUI(businessLogic);
+                } else if ((user.getUserName().equals(userNameF.getText()) || user.getEmail().equals(userNameF.getText())) & user.getPassword().equals(passwordF.getText()) & user.getAdmin().equals(true)) {
+                    Stage stage = (Stage) LoginBtn.getScene().getWindow();
+                    stage.close();
+                    new MainGUI(businessLogic);
+                    System.out.println("Admin Area");
+                }
+               else if (userNameF.getText().equals("") || passwordF.getText().equals("")) {
+                    labelFu.setText("A field is empty!!");
+                }
 
 
-                System.out.println("Admin Area");
-            }else if(!(u.getUserName().equals(userNameF.getText()))||!(u.getEmail().equals(userNameF.getText()))||!(u.getPassword().equals(passwordF.getText()))){
-                labelFp.setText("UserName or password is incorrect!!");
-            }else if(userNameF.getText().equals("")||passwordF.getText().equals("")) {
-                labelFu.setText("A field is empty!!");
             }
+            else {
+                System.out.println(user);
+                labelFp.setText("UserName or password is incorrect!!");
 
-        }
+            }
         }catch (Exception e){
             System.err.println(e);
         }
-        return users;
+        return user;
     }
 
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
-        this.mainGUI=mainGUI;
+
     }
 
     @Override
     public void setMainApp(MainUser mainUser) {
-        this.mainUser=mainUser;
+
     }
 
     @Override
     public void setHomeApp(Home home) {
-        this.home=home;
+
     }
 }

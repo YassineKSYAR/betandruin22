@@ -1,6 +1,5 @@
 package uicontrollers;
 
-import java.net.URL;
 import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.*;
@@ -32,11 +31,6 @@ public class CreateQuestionController implements Controller {
 
   private BlFacade businessLogic;
 
-  @FXML
-  private ResourceBundle resources;
-
-  @FXML
-  private URL location;
 
   @FXML
   private DatePicker datePicker;
@@ -62,7 +56,7 @@ public class CreateQuestionController implements Controller {
 
   @FXML
   private Label lblErrorMinBet;
-  private Home home;
+
 
 
   @FXML
@@ -239,7 +233,7 @@ public class CreateQuestionController implements Controller {
 
   @Override
   public void setHomeApp(Home home) {
-    this.home=home;
+
 
   }
 

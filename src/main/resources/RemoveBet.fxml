@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="584.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.RemoveBetController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onMouseEntered="#onShowBet" prefHeight="584.0" prefWidth="1230.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.RemoveBetController">
     <children>
         <TableView fx:id="tblBet" layoutX="25.0" layoutY="110.0" minWidth="-Infinity" prefHeight="303.0" prefWidth="1145.0">
             <columns>
@@ -28,11 +28,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="showBetBtn" layoutX="611.0" layoutY="50.0" mnemonicParsing="false" onAction="#onShowBet" prefHeight="26.0" prefWidth="222.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Click here to see your bet" textFill="#00b2c3">
-         <font>
-            <Font name="System Bold" size="15.0" />
-         </font></Button>
-      <Button fx:id="removeBtn" layoutX="650.0" layoutY="454.0" mnemonicParsing="false" onAction="#onremove" prefHeight="38.0" prefWidth="143.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Remove a bet" textFill="#00b2c3">
+      <Button fx:id="removeBtn" disable="true" layoutX="650.0" layoutY="455.0" mnemonicParsing="false" onAction="#onremove" prefHeight="38.0" prefWidth="143.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Remove a bet" textFill="#00b2c3">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

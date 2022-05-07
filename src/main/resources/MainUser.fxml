@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.MainUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.MainUserController">
     <children>
       <ImageView fitHeight="271.0" fitWidth="404.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -22,7 +22,7 @@
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="depMoney" layoutX="111.0" layoutY="125.0" mnemonicParsing="false" onAction="#ondepMoeny" prefHeight="25.0" prefWidth="181.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Deposit Moeny" textFill="#03cdff">
+      <Button fx:id="depMoney" layoutX="111.0" layoutY="125.0" mnemonicParsing="false" onAction="#ondepMoeny" prefHeight="25.0" prefWidth="181.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Deposit Money" textFill="#03cdff">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

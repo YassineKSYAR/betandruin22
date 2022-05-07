@@ -69,7 +69,7 @@ public interface BlFacade  {
 	 */
 	@WebMethod public Vector<Event> getEvents(Date date);
 	@WebMethod  List<Event> getEvent(long id);
-	@WebMethod public List<User> getUser();
+	@WebMethod  User getUser(String userName,String password);
 	@WebMethod List<Question> getQuestion(long id);
 	@WebMethod List<Bet>  getBetByID(long idU,long idB);
 
@@ -85,5 +85,6 @@ public interface BlFacade  {
 	 * @return collection of dates
 	 */
 	@WebMethod public Vector<Date> getEventsMonth(Date date);
+
 
 }
