@@ -37,6 +37,12 @@ public class CreateEventController implements Controller {
         private TextField eventInput;
 
         @FXML
+        private Button createBtn;
+
+       @FXML
+       private Label LblDate;
+
+        @FXML
         private Label msgLbl;
 
         Date eventDate;
@@ -63,10 +69,14 @@ public class CreateEventController implements Controller {
             setEvents(date.plusMonths(-1).getYear(), date.plusMonths(-1).getMonth().getValue());
         }
 
+        String inputEvent;
+
         @FXML
         void initialize() {
 
             //setupEventSelection();
+
+            createBtn.setDisable(true);
 
             setEventsPrePost(LocalDate.now().getYear(), LocalDate.now().getMonth().getValue());
 
@@ -78,11 +88,17 @@ public class CreateEventController implements Controller {
                 localDate = datePicker.getValue();
                 if(localDate == null){
                     System.out.println("date is null");
+                    msgLbl.setStyle("-fx-text-fill: red;");
+                    LblDate.setText("Enter a Date!!");
+                    createBtn.setDisable(true);
                 }else{
                     day = localDate.getDayOfMonth();
                     month = localDate.getMonth();
                     year = localDate.getYear();
                     System.out.println("year = " + year + " month = " + month + " day = " + day);
+                    eventDate = new Date(year - 1900,month.getValue() - 1,day);
+                    LblDate.setText("");
+                    createBtn.setDisable(false);
                 }
 
             });
@@ -101,6 +117,7 @@ public class CreateEventController implements Controller {
                                     this.setStyle("-fx-background-color: pink");
                                 }
                             }
+
                         }
                     };
                 }
@@ -109,7 +126,6 @@ public class CreateEventController implements Controller {
             // a date has been chosen, update the combobox of Events
             datePicker.setOnAction(actionEvent -> {
             });
-
         }
 
         @FXML
@@ -122,25 +138,20 @@ public class CreateEventController implements Controller {
         @FXML
         void onCreateBtn(ActionEvent event) {
             String inputEvent = eventInput.getText();
-
-            eventDate = new Date(year - 1900,month.getValue() - 1,day);
             Date currentDate = new Date();
-
             if(eventDate.compareTo(currentDate) > 0) {
-                if (inputEvent.length() > 0 && (!eventDate.equals(null))) {
-
+                if (inputEvent.length() > 0 && (eventDate != null)) {
                     System.out.println("year = " + year + " month = " + month + " day = " + day);
                     //businessLogic.createEvent(currentDate,description);
                     businessLogic.createEvent(eventDate , inputEvent);
                     System.out.println(localDate.toString());
                     msgLbl.setStyle("-fx-text-fill: green;");
                     msgLbl.setText("Event created");
-                }else if(eventDate.equals(null)){
+                    System.out.println("Event created");
+                    eventInput.setText("");
+                }else {
                     msgLbl.setStyle("-fx-text-fill: red;");
-                    msgLbl.setText("Enter a Date!!");
-                } else {
-                    msgLbl.setStyle("-fx-text-fill: red;");
-                    msgLbl.setText("Enter event!!");
+                    msgLbl.setText("Enter event details!!");
                     System.out.println("Event not created");
                 }
             }else{
@@ -157,13 +168,10 @@ public class CreateEventController implements Controller {
 
     @Override
     public void setMainApp(MainUser mainUser) {
-
-
     }
 
     @Override
     public void setHomeApp(Home home) {
-
     }
 
 }

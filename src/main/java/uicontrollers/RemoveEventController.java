@@ -155,6 +155,7 @@ public class RemoveEventController implements Controller{
             lblMessage.setStyle("-fx-text-fill: green;");
             lblMessage.setText("Event Deleted");
         }
+        tblEvent.getItems().removeAll(tblEvent.getSelectionModel().getSelectedItem());
     }
 
 
