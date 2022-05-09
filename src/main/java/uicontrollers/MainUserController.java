@@ -28,6 +28,10 @@ public class MainUserController implements Controller{
         mainUser.showRemoveBet();
     }
 
+    @FXML
+    void onShowMvm(ActionEvent event) {
+        mainUser.showMvm();
+    }
 
 
 

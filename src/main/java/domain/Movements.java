@@ -1,25 +1,29 @@
 package domain;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
-
-public class MyMovements {
+@Entity
+public class Movements {
     @Id
     @GeneratedValue
     long id;
     private Date date;
+
+    private String type;
     private long idUser;
     private long idResults;
     private float amount ;
-    private float fee;
 
-    public  MyMovements(Date date,long idResults,int amount,float fee,long idUser){
+
+    public Movements(long idResults,Date date,String type,int amount, long idUser){
         this.date=date;
-        this.idResults=idResults;
         this.amount=amount;
-        this.fee=fee;
         this.idUser=idUser;
+        this.type=type;
+        this.idResults=idResults;
+
     }
 
 
@@ -32,9 +36,14 @@ public class MyMovements {
         this.idUser = idUser;
     }
 
-    public MyMovements() {
+    public Movements() {
 
     }
+
+    public String getType() {
+        return type;
+    }
+
 
     public Date getDate() {
         return date;
@@ -44,9 +53,6 @@ public class MyMovements {
         return amount;
     }
 
-    public long getIdResults() {
-        return idResults;
-    }
 
     public long getId() {
         return id;
@@ -54,13 +60,17 @@ public class MyMovements {
 
     @Override
     public String toString() {
-        return "MyMovements{" +
+        return "Movements{" +
                 "id=" + id +
                 ", date=" + date +
+                ", type='" + type + '\'' +
                 ", idUser=" + idUser +
                 ", idResults=" + idResults +
                 ", amount=" + amount +
-                ", fee=" + fee +
                 '}';
+    }
+
+    public long getIdResults() {
+        return idResults;
     }
 }

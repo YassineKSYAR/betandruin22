@@ -28,6 +28,9 @@ public class RemoveBetController implements Controller{
     @FXML
     private Button removeBtn;
 
+
+
+
     @FXML
     private TableColumn<MyBet, Date> dateB;
 
@@ -57,6 +60,7 @@ public class RemoveBetController implements Controller{
     BlFacade businessLogic;
 
 
+
     public RemoveBetController(BlFacade bl) {
         businessLogic = bl;
     }
@@ -73,6 +77,7 @@ public class RemoveBetController implements Controller{
 
     @FXML
     void onShowBet(MouseEvent event) {
+
         tblBet.getItems().clear();
             displayBets();
 
@@ -122,10 +127,12 @@ public class RemoveBetController implements Controller{
 
     @FXML
     void onremove(ActionEvent event) {
+        Date date =new Date();
         float bet=tblBet.getSelectionModel().getSelectedItem().getB();
         businessLogic.depMoeny(mainUser.user,bet);
         long idBet=tblBet.getSelectionModel().getSelectedItem().getId();
         businessLogic.deleteBet(mainUser.user.getId(),idBet);
+        businessLogic.createMvm(date,0,"Remove a Bet",(int)bet,mainUser.getUser().getId());
         tblBet.getItems().clear();
         removeSuc.setText("Your bet has been deleted");
         displayBets();

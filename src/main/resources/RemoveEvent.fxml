@@ -8,20 +8,20 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.RemoveEventController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.RemoveEventController">
     <children>
-        <DatePicker fx:id="datePicker" layoutX="213.0" layoutY="40.0" />
-        <TableView fx:id="tblEvent" layoutX="133.0" layoutY="87.0" prefHeight="146.0" prefWidth="333.0">
+        <DatePicker fx:id="datePicker" layoutX="213.0" layoutY="40.0" style="-fx-border-color: #ffae00;" />
+        <TableView fx:id="tblEvent" layoutX="133.0" layoutY="87.0" prefHeight="146.0" prefWidth="333.0" style="-fx-border-color: #ffae00;">
             <columns>
                 <TableColumn fx:id="ec1" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="ec2" prefWidth="256.6666259765625" text="Event" />
             </columns>
         </TableView>
-        <Button fx:id="CloseBtn" layoutX="465.0" layoutY="354.0" mnemonicParsing="false" onAction="#onCloseBtn" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Back" textFill="#017c8f">
+        <Button fx:id="CloseBtn" layoutX="465.0" layoutY="354.0" mnemonicParsing="false" onAction="#onCloseBtn" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Back" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-        <Button fx:id="RemoveBtn" layoutX="245.0" layoutY="285.0" mnemonicParsing="false" onAction="#onRemoveBtn" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Remove" textFill="#017c8f">
+        <Button fx:id="RemoveBtn" layoutX="240.0" layoutY="279.0" mnemonicParsing="false" onAction="#onRemoveBtn" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Remove" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

@@ -14,6 +14,8 @@ import ui.Home;
 import ui.MainGUI;
 import ui.MainUser;
 
+import java.util.Date;
+
 public class DepMoneyController implements Controller {
 
     private BlFacade businessLogic;
@@ -51,7 +53,9 @@ public class DepMoneyController implements Controller {
     @FXML
     void onSetMoeny(ActionEvent event) {
         if (depMoneyF.getText().length()>0){
+            Date date=new Date();
             businessLogic.depMoeny(mainUser.user, Float.parseFloat(depMoneyF.getText()));
+            businessLogic.createMvm(date,0,"deposit Money",Integer.parseInt(depMoneyF.getText()),mainUser.getUser().getId());
             okLabel.setText("Your balance has been added");
 
             myBalance.setText(""+businessLogic.getMony(mainUser.user).get(0).getMoney());

@@ -7,15 +7,15 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.CreateEventController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.CreateEventController">
     <children>
-        <DatePicker fx:id="datePicker" layoutX="224.0" layoutY="71.0" promptText="Pick a date" />
-        <Label alignment="CENTER" layoutX="251.0" layoutY="31.0" prefHeight="26.0" prefWidth="120.0" text="Create Event" textFill="#ffae00">
+        <DatePicker fx:id="datePicker" layoutX="224.0" layoutY="71.0" promptText="Pick a date" style="-fx-background-color: #ffae00;" />
+        <Label alignment="CENTER" layoutX="251.0" layoutY="31.0" prefHeight="26.0" prefWidth="120.0" text="Create Event">
             <font>
                 <Font name="System Bold" size="17.0" />
             </font>
         </Label>
-        <Label layoutX="79.0" layoutY="248.0" text="Entre Event:" textFill="#ffb200" />
+        <Label layoutX="79.0" layoutY="248.0" text="Entre Event:" />
         <TextField fx:id="eventInput" layoutX="150.0" layoutY="244.0" prefHeight="25.0" prefWidth="345.0" style="-fx-border-color: #ffb200; -fx-border-radius: 5px;" />
         <Button fx:id="CloseBtn" layoutX="338.0" layoutY="324.0" mnemonicParsing="false" onAction="#onCloseBtn" prefHeight="25.0" prefWidth="105.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Close" textFill="#ffae00">
             <font>

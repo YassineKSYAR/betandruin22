@@ -4,12 +4,19 @@ import java.util.Date;
 
 public class MyBet {
     long Id;
+
     Date date ;
     String ev;
     String q;
     String re;
     float f;
     float b;
+
+    String type;
+    long idR;
+
+
+
     public MyBet(long Id,Date date ,String ev,String q,String re,float f,float b){
         this.Id=Id;
         this.date=date;
@@ -20,6 +27,23 @@ public class MyBet {
         this.b=b;
 
     }
+
+    public MyBet(Date date,String type ,float amount){
+        this.date=date;
+        this.f=amount;
+        this.type=type;
+    }
+    public MyBet(long id,Date date,String type ,float amount){
+        this.date=date;
+        this.f=amount;
+        this.type=type;
+        this.idR=id;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
 
     public String getRe() {
         return re;
@@ -45,19 +69,31 @@ public class MyBet {
         return date;
     }
 
+    public String getType() {
+        return type;
+    }
+
+
     public long getId() {
         return Id;
+    }
+
+    public long getIdR() {
+        return idR;
     }
 
     @Override
     public String toString() {
         return "MyBet{" +
-                "date=" + date +
+                "Id=" + Id +
+                ", date=" + date +
                 ", ev='" + ev + '\'' +
                 ", q='" + q + '\'' +
                 ", re='" + re + '\'' +
                 ", f=" + f +
                 ", b=" + b +
+                ", type='" + type + '\'' +
+                ", idR=" + idR +
                 '}';
     }
 }

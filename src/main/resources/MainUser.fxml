@@ -7,29 +7,34 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="267.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.MainUserController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="264.0" prefWidth="404.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.MainUserController">
     <children>
-      <ImageView fitHeight="271.0" fitWidth="404.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="343.0" fitWidth="404.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Background.jpeg" />
          </image>
       </ImageView>
-        <Label fx:id="selectOptionLbl" layoutX="134.0" layoutY="20.0" text="%SelectUseCase" textFill="#005791">
+        <Label fx:id="selectOptionLbl" layoutX="134.0" layoutY="20.0" text="%SelectUseCase">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Label>
-        <Button fx:id="MakeBet" layoutX="111.0" layoutY="63.0" mnemonicParsing="false" onAction="#MakeBet" prefHeight="26.0" prefWidth="181.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Make a Bet" textFill="#03cdff">
+        <Button fx:id="MakeBet" layoutX="111.0" layoutY="63.0" mnemonicParsing="false" onAction="#MakeBet" prefHeight="26.0" prefWidth="181.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Make a Bet" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="depMoney" layoutX="111.0" layoutY="125.0" mnemonicParsing="false" onAction="#ondepMoeny" prefHeight="25.0" prefWidth="181.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Deposit Money" textFill="#03cdff">
+      <Button fx:id="depMoney" layoutX="109.0" layoutY="118.0" mnemonicParsing="false" onAction="#ondepMoeny" prefHeight="25.0" prefWidth="181.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Deposit Money" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="removeBetBtn" layoutX="111.0" layoutY="189.0" mnemonicParsing="false" onAction="#onRemoveBet" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Remove a Bet" textFill="#03cdff">
+      <Button fx:id="removeBetBtn" layoutX="109.0" layoutY="169.0" mnemonicParsing="false" onAction="#onRemoveBet" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Remove a Bet" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
+      <Button fx:id="showMvmBtn" layoutX="108.0" layoutY="219.0" mnemonicParsing="false" onAction="#onShowMvm" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Show movements " textFill="#ffae00">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Button>
 
     </children>
 </AnchorPane>

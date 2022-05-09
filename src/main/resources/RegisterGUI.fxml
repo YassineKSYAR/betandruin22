@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="462.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.RegisterController">
+<AnchorPane prefHeight="462.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.RegisterController">
    <children>
       <ImageView fitHeight="495.0" fitWidth="696.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -21,25 +21,25 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="fnameF" alignment="CENTER" layoutX="438.0" layoutY="94.0" promptText="First name" />
+      <TextField fx:id="fnameF" alignment="CENTER" layoutX="438.0" layoutY="94.0" promptText="First name" style="-fx-border-color: black;" />
       <Label fx:id="lnameLab" alignment="TOP_RIGHT" layoutX="271.0" layoutY="144.0" prefHeight="17.0" prefWidth="129.0" text="Laste name :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="lnameF" alignment="CENTER" layoutX="438.0" layoutY="141.0" promptText="Laste name" />
+      <TextField fx:id="lnameF" alignment="CENTER" layoutX="438.0" layoutY="141.0" promptText="Laste name" style="-fx-border-color: black;" />
       <Label fx:id="userNameLab" alignment="TOP_RIGHT" layoutX="271.0" layoutY="187.0" prefHeight="17.0" prefWidth="129.0" text="UserName :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="userNameF" alignment="CENTER" layoutX="438.0" layoutY="184.0" promptText="User name" />
+      <TextField fx:id="userNameF" alignment="CENTER" layoutX="438.0" layoutY="184.0" promptText="User name" style="-fx-border-color: black;" />
       <Label fx:id="emailLab" alignment="TOP_RIGHT" layoutX="271.0" layoutY="235.0" prefHeight="17.0" prefWidth="129.0" text="Email :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="emailF" alignment="CENTER" layoutX="438.0" layoutY="232.0" promptText="Email@example.com" />
+      <TextField fx:id="emailF" alignment="CENTER" layoutX="438.0" layoutY="232.0" promptText="Email@example.com" style="-fx-border-color: black;" />
       <Label fx:id="passwordLab" alignment="TOP_RIGHT" layoutX="271.0" layoutY="280.0" prefHeight="17.0" prefWidth="129.0" text="Password :">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -50,12 +50,12 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="registerBtn" layoutX="544.0" layoutY="403.0" mnemonicParsing="false" onAction="#onCreateUser" prefHeight="32.0" prefWidth="117.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Sign up" textFill="#02f2ff">
+      <Button fx:id="registerBtn" layoutX="437.0" layoutY="403.0" mnemonicParsing="false" onAction="#onCreateUser" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Sign up" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <PasswordField fx:id="passwordF" alignment="CENTER" layoutX="438.0" layoutY="277.0" promptText="Password" />
-      <PasswordField fx:id="cpasswordF" alignment="CENTER" layoutX="438.0" layoutY="335.0" promptText="Confirm your password" />
+      <PasswordField fx:id="passwordF" alignment="CENTER" layoutX="438.0" layoutY="277.0" promptText="Password" style="-fx-border-color: black;" />
+      <PasswordField fx:id="cpasswordF" alignment="CENTER" layoutX="438.0" layoutY="335.0" promptText="Confirm your password" style="-fx-border-color: black;" />
       <Label fx:id="labelF" alignment="CENTER" layoutX="438.0" layoutY="64.0" prefHeight="17.0" prefWidth="149.0" textFill="#f00020">
          <font>
             <Font name="System Bold" size="14.0" />

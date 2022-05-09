@@ -223,12 +223,19 @@ public class MakeBetController implements Controller {
 
     @FXML
     void onBet(ActionEvent event) {
+        Date date=new Date();
+        float money=businessLogic.getMony(mainUser.getUser()).get(0).getMoney();
+
         Results results=tblResults.getSelectionModel().getSelectedItem();
         System.out.println(businessLogic.getMony(mainUser.user).get(0).getMoney());
-        float money=businessLogic.getMony(mainUser.getUser()).get(0).getMoney();
+
         if((int)money>=((int)amountInpute.getValue())) {
             businessLogic.deleteMoeny(mainUser.user, (int) amountInpute.getValue());
+
             businessLogic.createBet(results.getIdR(), (int) amountInpute.getValue(), results.getFee(), mainUser.getUser().getId());
+
+            businessLogic.createMvm(date,results.getIdR(),"Bet", (int) amountInpute.getValue(), mainUser.getUser().getId());
+
             betCr.setText("Your bet has been created");
             moenyIns.setText("");
             labelBalnce.setText(""+businessLogic.getMony(mainUser.user).get(0).getMoney());

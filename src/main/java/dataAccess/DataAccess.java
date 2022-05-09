@@ -272,6 +272,16 @@ public class DataAccess  {
 			return bet;
 		}
 
+		public Movements createMvm(Date date,long idResults,String type,int amount,long idUser){
+
+			System.out.println(">> DataAccess: createMvm=> Date = "+date+"amount"+amount);
+			Movements movements = new Movements(idResults,date,type,amount,idUser);
+			db.getTransaction().begin();
+			db.persist(movements);
+			db.getTransaction().commit();
+			return movements;
+		}
+
 	/**
 	 * This method retrieves from the database the events of a given date
 	 *
@@ -456,6 +466,13 @@ public class DataAccess  {
 			TypedQuery<Bet> b = db.createQuery("SELECT u FROM Bet  u where u.idUser="+idU+" AND u.id="+idB,Bet.class);
 			List<Bet>  bet= b.getResultList();
 			return bet;
+		}
+
+		public  List<Movements >  getBetMvm(User user){
+			System.out.println(">> DataAccess: getBet");
+			TypedQuery<Movements> q = db.createQuery("SELECT u FROM Movements  u where u.idUser="+user.getId(),Movements .class);
+			List<Movements> movements= q.getResultList();
+			return movements;
 		}
 
 	public void deleteBet(long idU,long idBet) {

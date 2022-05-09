@@ -41,6 +41,9 @@ public interface BlFacade  {
 	Bet createBet(long idResults, int amount,float fee,long idUser);
 
 	@WebMethod
+	Movements createMvm(Date date,long idR,String type,int amount,long idUser);
+
+	@WebMethod
 	User  depMoeny(User user,float money);
 	@WebMethod
 	List<Results>  getResults(int idEvent,int idQuestion);
@@ -49,6 +52,8 @@ public interface BlFacade  {
 
 	@WebMethod
 	 List<Bet> getBet(User user);
+	@WebMethod
+	List<Movements>  getBetMvm(User user);
 	@WebMethod List<User>  getMony(User user);
 
 	@WebMethod

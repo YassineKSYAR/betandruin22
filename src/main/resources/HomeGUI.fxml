@@ -6,18 +6,18 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="314.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.HomeController">
+<AnchorPane prefHeight="314.0" prefWidth="485.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.HomeController">
    <children>
       <ImageView fitHeight="322.0" fitWidth="485.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@Background.jpeg" />
          </image>
       </ImageView>
-      <Button fx:id="loginBtn" layoutX="147.0" layoutY="145.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="32.0" prefWidth="191.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Login" textFill="#00b6ed">
+      <Button fx:id="loginBtn" layoutX="147.0" layoutY="145.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="32.0" prefWidth="191.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Login" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <Button fx:id="RegisterBtn" layoutX="147.0" layoutY="195.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="32.0" prefWidth="191.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Register" textFill="#00b6ed">
+      <Button fx:id="RegisterBtn" layoutX="147.0" layoutY="195.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="32.0" prefWidth="191.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Register" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>

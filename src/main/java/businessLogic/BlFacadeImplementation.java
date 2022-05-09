@@ -11,11 +11,7 @@ import javax.jws.WebService;
 
 import configuration.ConfigXML;
 import dataAccess.DataAccess;
-import domain.Event;
-import domain.Question;
-import domain.Results;
-import domain.User;
-import domain.Bet;
+import domain.*;
 import exceptions.EventFinished;
 import exceptions.QuestionAlreadyExist;
 
@@ -134,6 +130,16 @@ public class BlFacadeImplementation implements BlFacade {
 		return bet;
 	}
 
+	public Movements createMvm(Date date,long idR,String type,int amount,long idUser){
+		dbManager.open(false);
+		Movements movements =null;
+		movements=dbManager. createMvm( date,idR,type,amount,idUser);
+		dbManager.close();
+		return movements;
+	}
+
+
+
 	@WebMethod
 	public User  deleteMoeny(User user,int money){
 		dbManager.open(false);
@@ -241,6 +247,16 @@ public class BlFacadeImplementation implements BlFacade {
 		dbManager.close();
 		return bets;
 	}
+
+	@WebMethod
+	public List<Movements>  getBetMvm(User user){
+		dbManager.open(false);
+		System.out.println(">> DataAccess: getBet");
+		List<Movements> bets = dbManager.getBetMvm(user);
+		dbManager.close();
+		return bets;
+	}
+
 
 	@WebMethod
 	public void  deleteBet(long idU,long idBet){
