@@ -8,6 +8,10 @@ import configuration.ConfigXML;
 import configuration.UtilDate;
 import domain.*;
 import exceptions.QuestionAlreadyExist;
+import Api.Api;
+import domain.Matches;
+import org.joda.time.DateTime;
+import org.joda.time.format.ISODateTimeFormat;
 
 	/**
  * Implements the Data Access utility to the objectDb database
@@ -18,6 +22,8 @@ public class DataAccess  {
 	protected EntityManagerFactory emf;
 
 	ConfigXML config = ConfigXML.getInstance();
+
+	private List<Matches> events = new ArrayList<>();
 
 	public DataAccess(boolean initializeMode)  {
 		System.out.println("Creating DataAccess instance => isDatabaseLocal: " +
@@ -37,6 +43,8 @@ public class DataAccess  {
 	 */
 	public void initializeDB(){
 
+		events = Api.setEvents();
+
 		db.getTransaction().begin();
 
 		try {
@@ -48,7 +56,24 @@ public class DataAccess  {
 			int year = today.get(Calendar.YEAR);
 			if (month == 12) { month = 0; year += 1;}
 
-			Event ev1 = new Event(1, "Atlético-Athletic", UtilDate.newDate(year, month, 17));
+			events = Api.setEvents();
+
+			for(Matches ev: events){
+
+				DateTime dateTime = ISODateTimeFormat.dateTimeParser().parseDateTime(ev.utcDate);
+
+				Event event = new Event(ev.id,ev.homeTeam.name + "-" + ev.awayTeam.name,UtilDate.newDate(dateTime.getYear(),dateTime.getMonthOfYear()-1,dateTime.getDayOfMonth()));
+
+				//Question q2;
+				Question q1Test;
+				q1Test = event.addQuestion("Who will win the match?", 3);
+
+				db.persist(q1Test);
+				db.persist(event);
+
+			}
+
+			/*Event ev1 = new Event(1, "Atlético-Athletic", UtilDate.newDate(year, month, 17));
 			Event ev2 = new Event(2, "Eibar-Barcelona", UtilDate.newDate(year, month, 17));
 			Event ev3 = new Event(3, "Getafe-Celta", UtilDate.newDate(year, month, 17));
 			Event ev4 = new Event(4, "Alavés-Deportivo", UtilDate.newDate(year, month, 17));
@@ -77,9 +102,9 @@ public class DataAccess  {
 			Question q3;
 			Question q4;
 			Question q5;
-			Question q6;
+			Question q6;*/
 
-			if (Locale.getDefault().equals(new Locale("es"))) {
+			/*if (Locale.getDefault().equals(new Locale("es"))) {
 				q1 = ev1.addQuestion("¿Quién ganará el partido?", 1);
 				q2 = ev1.addQuestion("¿Quién meterá el primer gol?", 2);
 				q3 = ev11.addQuestion("¿Quién ganará el partido?", 1);
@@ -102,13 +127,15 @@ public class DataAccess  {
 				q4 = ev11.addQuestion("Zenbat gol sartuko dira?", 2);
 				q5 = ev17.addQuestion("Zeinek irabaziko du partidua?", 1);
 				q6 = ev17.addQuestion("Golak sartuko dira lehenengo zatian?", 2);
-			}
+			}*/
 
 			User admin =new User("admin","admin","admin","admin","admin");
 			admin.setAdmin(true);
 			User user=new User("test","test","test","test","test");
+			User user1=new User("test1","test1","test1","test1","test1");
+			User user2=new User("test2","test2","test2","test2","test2");
 
-			Results r1= new Results(11,3,"Atletico", 2.5F);
+			/*Results r1= new Results(11,3,"Atletico", 2.5F);
 			Results r2= new Results(11,4,"5", 2.5F);
 
 			db.persist(q1);
@@ -137,16 +164,31 @@ public class DataAccess  {
 			db.persist(ev17);
 			db.persist(ev18);
 			db.persist(ev19);
-			db.persist(ev20);
+			db.persist(ev20);*/
 
 			db.persist(admin);
 			db.persist(user);
+			db.persist(user1);
+			db.persist(user2);
 
-			db.persist(r1);
-			db.persist(r2);
+
+			/*db.persist(r1);
+			db.persist(r2);*/
 
 			db.getTransaction().commit();
 			System.out.println("The database has been initialized");
+
+
+			for(Matches ev: events){
+
+				DateTime dateTime = ISODateTimeFormat.dateTimeParser().parseDateTime(ev.utcDate);
+
+
+				setQuestion(ev.id,getIDQuestion(),ev.homeTeam.name,ev.awayTeam.name);
+			}
+
+
+
 		}
 		catch (Exception e){
 			e.printStackTrace();
@@ -162,6 +204,19 @@ public class DataAccess  {
 	 * @return the created question, or null, or an exception
 	 * @throws QuestionAlreadyExist if the same question already exists for the event
 	 */
+
+
+	public List<Question> setQuestion(int id,List<Question> questions,String homeTeam,String awayTeam){
+		for (Question question:questions) {
+			Results r1 = new Results(id, question.getQuestionNumber(), homeTeam, 2.5F);
+			Results r2 = new Results(id, question.getQuestionNumber(), awayTeam, 2.5F);
+			db.getTransaction().begin();
+			db.persist(r1);
+			db.persist(r2);
+			db.getTransaction().commit();
+		}
+		return questions;
+	}
 	public Question createQuestion(Event event, String question, float betMinimum)
 			throws QuestionAlreadyExist {
 		System.out.println(">> DataAccess: createQuestion=> event = " + event + " question = " +
@@ -174,7 +229,6 @@ public class DataAccess  {
 
 		db.getTransaction().begin();
 		Question q = ev.addQuestion(question, betMinimum);
-		//db.persist(q);
 		db.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added
 		// in questions property of Event class
 		// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
@@ -258,6 +312,41 @@ public class DataAccess  {
 		db.getTransaction().commit();
 		return r;
 	}
+
+	public List<Bet> publishResult(int eventId,String winner){
+		Results WinningResults = getResults(eventId,winner).get(0);
+		System.out.println(WinningResults);
+		List<Bet> WinningBets = getBetByResultID(WinningResults.getIdR());
+		System.out.println(WinningBets);
+		for(Bet B:WinningBets){
+			addMoney((int) B.getIdUser(),B.getAmount()*B.getFee());
+		}
+
+		return WinningBets;
+	}
+
+		public  List<Question>  getIDQuestion(){
+
+			TypedQuery<Question> q = db.createQuery("SELECT u FROM Question u ", Question.class);
+
+			List<Question> questions = q.getResultList();
+			return questions;
+		}
+
+	public  List<Results>  getResults(int idEvent,String winner){
+		System.out.println(">> DataAccess: getResults");
+		System.out.println(winner);
+		TypedQuery<Results> r1 = db.createQuery("SELECT u FROM Results u where u.idevent="+idEvent+" and u.result=?1", Results.class);
+		r1.setParameter(1, winner);
+		System.out.println(r1);
+			List<Results> results = r1.getResultList();
+			return results;
+	}
+
+
+
+
+
 
 
 		public Bet createBet(long idResults,int amount,float fee,long idUser){
@@ -360,8 +449,6 @@ public class DataAccess  {
 
 			return users.get(0);
 		}
-
-
 	}
 
 	public List<User> getMony(User user) {
@@ -417,10 +504,19 @@ public class DataAccess  {
 		db.persist(u);
 		db.getTransaction().commit();
 		System.out.println(u.toString() + " has been updated");
-	}
+	    }
+    }
+
+		public void addMoney(int idUser,float mn){
+				db.getTransaction().begin();
+				User u =db.find(User.class,idUser);
+				u.addMoney(mn);
+				db.persist(u);
+				db.getTransaction().commit();
+				System.out.println(u.toString() + " has been updated");
+			}
 
 
-}
 		public void deleteMoeny(User user,int mn){
 			if (user == null)
 				System.out.println("User" + user.toString() + " is not in the db");
@@ -467,6 +563,15 @@ public class DataAccess  {
 			List<Bet>  bet= b.getResultList();
 			return bet;
 		}
+
+		public  List<Bet>  getBetByResultID(long idR){
+			System.out.println(">> DataAccess: getBet");
+			TypedQuery<Bet> b = db.createQuery("SELECT u FROM Bet  u where u.idResults="+idR,Bet.class);
+			List<Bet>  bet= b.getResultList();
+			return bet;
+		}
+
+
 
 		public  List<Movements >  getBetMvm(User user){
 			System.out.println(">> DataAccess: getBet");

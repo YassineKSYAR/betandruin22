@@ -27,6 +27,10 @@ public class Event implements Serializable {
 	private String description; 
 	private Date eventDate;
 
+	/////////////////////////////////////
+	public String Status;
+	////////////////////////////////////
+
 	@OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	private Vector<Question> questions = new Vector<Question>();
 
@@ -80,7 +84,7 @@ public class Event implements Serializable {
 
 	@Override
 	public String toString(){
-		return eventNumber+";"+description;
+		return eventNumber+";"+description+";"+eventDate+";"+Status;
 	}
 
 	/**

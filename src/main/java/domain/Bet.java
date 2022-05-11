@@ -47,6 +47,10 @@ public class Bet {
         return id;
     }
 
+    public float getFee() {
+        return fee;
+    }
+
     @Override
     public String toString() {
         return "Bet{" +

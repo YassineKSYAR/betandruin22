@@ -34,12 +34,6 @@ public class LoginController implements Controller{
     private Label labelFu;
 
     @FXML
-    private ImageView backImage;
-
-    @FXML
-    private ImageView logoImage;
-
-    @FXML
     private Label labelFp ;
 
     public LoginController(BlFacade bl) {
@@ -52,7 +46,6 @@ public class LoginController implements Controller{
     @FXML
     void onLogin(ActionEvent event) {
         LoginU();
-
     }
 
 

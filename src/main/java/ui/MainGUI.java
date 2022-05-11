@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class MainGUI {
 
-  private Window mainLag, createQuestionLag, browseQuestionsLag,setFee,createEventLag, removeEventLag;
+  private Window mainLag,createQuestionLag,browseQuestionsLag,setFee,createEventLag,removeEventLag,publishResultLag;
   private User user;
   private BlFacade businessLogic;
   private Stage stage;
@@ -62,6 +62,8 @@ public class MainGUI {
         return new CreateEventController(businessLogic);
       }if(controllerClass == RemoveEventController.class){
         return new RemoveEventController(businessLogic);
+      }if(controllerClass == PublishResultController.class){
+        return new PublishResultController(businessLogic);
       } else {
         // default behavior for controllerFactory:
         try {
@@ -92,6 +94,7 @@ public class MainGUI {
     ///////////////////////////////////////////////////////////
     createEventLag = load("/CreateEvent.fxml");
     removeEventLag = load("/RemoveEvent.fxml");
+    publishResultLag = load("/PublishResult.fxml");
     //////////////////////////////////////////////////////////
 
     showMain();
@@ -123,6 +126,8 @@ public class MainGUI {
   public void showCreateEvent(){ setupScene(createEventLag.ui, "CreateEvent", 600,500); }
 
   public void showRemoveEvent(){ setupScene(removeEventLag.ui, "RemoveEvent", 610,500); }
+
+  public void showPublishResult(){ setupScene(publishResultLag.ui, "PublishResult", 650,507); }
 
   private void setupScene(Parent ui, String title, int width, int height) {
     if (scene == null){

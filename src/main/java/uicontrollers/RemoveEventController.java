@@ -170,7 +170,6 @@ public class RemoveEventController implements Controller{
     @Override
     public void setMainApp(MainUser mainUser) {
         this.mainUser=mainUser;
-
     }
 
     @Override

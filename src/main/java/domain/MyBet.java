@@ -25,7 +25,6 @@ public class MyBet {
         this.re=re;
         this.f=f;
         this.b=b;
-
     }
 
     public MyBet(Date date,String type ,float amount){

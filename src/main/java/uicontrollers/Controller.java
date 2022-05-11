@@ -1,6 +1,5 @@
 package uicontrollers;
 
-import domain.User;
 import ui.Home;
 import ui.MainGUI;
 import ui.MainUser;

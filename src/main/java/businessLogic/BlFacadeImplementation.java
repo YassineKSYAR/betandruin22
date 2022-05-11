@@ -138,6 +138,12 @@ public class BlFacadeImplementation implements BlFacade {
 		return movements;
 	}
 
+	public void publishResult(int eventId,String winner){
+		dbManager.open(false);
+		dbManager.publishResult(eventId,winner);
+		dbManager.close();
+	}
+
 
 
 	@WebMethod

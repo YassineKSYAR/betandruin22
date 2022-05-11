@@ -14,6 +14,8 @@ public class MainGUIController implements Controller{
     @FXML
     public Button removeEventBtn;
 
+    @FXML
+    private Button publishResultBtn;
 
     /////////////////////////////////////////////
     private MainGUI mainGUI;
@@ -40,6 +42,9 @@ public class MainGUIController implements Controller{
     @FXML
     void onRemoveBtn(ActionEvent event){ mainGUI.showRemoveEvent(); }
 
+    @FXML
+    void onPublishResult(ActionEvent event) { mainGUI.showPublishResult(); }
+
 
 
     @FXML
@@ -51,7 +56,6 @@ public class MainGUIController implements Controller{
     @Override
     public void setMainApp(MainGUI mainGUI) {
         this.mainGUI=mainGUI;
-
     }
 
     @Override
