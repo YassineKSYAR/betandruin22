@@ -7,19 +7,7 @@ public class Matches {
     public int id;
 
 
-    /*public Competition competition;
-    public class Competition{
-        public int id;
-        public String name;
-
-        @Override
-        public String toString() {
-            return "Competition{" +
-                    "id=" + this.id +
-                    ", Name='" + this.name + '\'' +
-                    '}';
-        }
-    }*/
+   
 
     public String utcDate;
 
@@ -54,13 +42,11 @@ public class Matches {
 
     public Hometeam homeTeam;
      public class Hometeam{
-         //public int id;
          public String name;
 
          @Override
          public String toString() {
              return "Hometeam{" +
-                     /*"id=" + this.id +*/
                      ", name='" + this.name + '\'' +
                      '}';
          }
@@ -68,13 +54,13 @@ public class Matches {
 
     public Awayteam awayTeam;
     public class Awayteam{
-        //public int id;
+        
         public String name;
 
         @Override
         public String toString() {
             return "Awayteam{" +
-                    /*"id=" + this.id +*/
+                   
                     ", name='" + this.name + '\'' +
                     '}';
         }
@@ -84,7 +70,7 @@ public class Matches {
     public String toString() {
         return "Matches{" +
                 ", id=" + id +
-                /*", competition=" + competition.toString() +*/
+                
                 ", utcDate='" + utcDate + '\'' +
                 ", status='" + status + '\'' +
                 ", score=" + score +
@@ -92,17 +78,5 @@ public class Matches {
                 ", awayteam=" + awayTeam +
                 '}';
     }
-
-   /* public Matches(int id,String utcDate,String status,String winner,int homeTeam,int awayTeam,String homeTeamName,String awayTeamName){
-        this.id = id;
-        this.utcDate = utcDate;
-        this.status =status;
-        this.score.winner= winner;
-        this.score.fullTime.homeTeam = homeTeam;
-        this.score.fullTime.awayTeam = awayTeam;
-        this.homeTeam.name = homeTeamName;
-        this.awayTeam.name = awayTeamName;
-    }*/
-
 
 }
