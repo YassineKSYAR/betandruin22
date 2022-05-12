@@ -138,9 +138,9 @@ public class BlFacadeImplementation implements BlFacade {
 		return movements;
 	}
 
-	public void publishResult(int eventId,String winner){
+	public void publishResult(int eventId,String winner,String loser) {
 		dbManager.open(false);
-		dbManager.publishResult(eventId,winner);
+		dbManager.publishResult(eventId,winner,loser);
 		dbManager.close();
 	}
 

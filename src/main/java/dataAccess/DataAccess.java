@@ -331,8 +331,9 @@ public class DataAccess  {
 			return ev.get(0);
 		}
 
-	public List<Bet> publishResult(int eventId,String winner){
+	public List<Bet> publishResult(int eventId,String winner,String loser){
 		List<Bet> WinningBets = null;
+		List<Bet> losersBets = null;
 		Event event1=findEventId(eventId);
 		if(findEventById(eventId) == false){
 			System.out.println("Event is not available anymore!!");
@@ -340,11 +341,20 @@ public class DataAccess  {
 		}else if(findEventById(eventId) == true){
 			if(event1.isPublished()==false){
 			Results WinningResults = getResults(eventId,winner).get(0);
-			System.out.println(WinningResults);
+			Results losers = getResults(eventId,loser).get(0);
+
 			WinningBets = getBetByResultID(WinningResults.getIdR());
-			System.out.println(WinningBets);
+			losersBets = getBetByResultID(losers.getIdR());
+
+
 			for(Bet B:WinningBets){
 				addMoney((int) B.getIdUser(),B.getAmount()*B.getFee());
+				deleteBet(B.getIdUser(),B.getId());
+
+			}
+			for(Bet Bl:losersBets){
+					deleteBet(Bl.getIdUser(),Bl.getId());
+
 			}
 			Published(event1,true);
 

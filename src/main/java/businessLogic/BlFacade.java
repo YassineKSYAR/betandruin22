@@ -44,7 +44,7 @@ public interface BlFacade  {
 	Movements createMvm(Date date,long idR,String type,int amount,long idUser);
 
 	@WebMethod
-	void publishResult(int eventId,String winnner);
+	void publishResult(int eventId,String winner,String loser);
 
 	@WebMethod
 	User  depMoeny(User user,float money);

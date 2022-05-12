@@ -181,8 +181,14 @@ public class PublishResultController implements Controller{
         }else if((events.get(Index).status).equals("FINISHED")&&winnerTeam.getText().length()>0){
             int id = Integer.parseInt(idEvent.getText());
             String win = winnerTeam.getText();
+            String loser=null;
+            if(win.equals(homeTeam.getText())){
+                loser=awayTeam.getText();
+            }else {
+                loser=homeTeam.getText();
+            }
             System.out.println(win + " " + id);
-            businessLogic.publishResult(id,win);
+            businessLogic.publishResult(id,win,loser);
         }
         this.event=businessLogic.getEvent(Long.parseLong(idEvent.getText())).get(0);
         if (this.event.isPublished()==true){
