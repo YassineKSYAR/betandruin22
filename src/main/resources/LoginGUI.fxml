@@ -11,11 +11,6 @@
 
 <Pane prefHeight="454.0" prefWidth="582.0" style="-fx-background-color: #ebb000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.LoginController">
    <children>
-      <ImageView fitHeight="31.0" fitWidth="301.0" layoutX="141.0" layoutY="44.0" pickOnBounds="true">
-         <image>
-            <Image url="@Untitled-1.png" />
-         </image>
-      </ImageView>
       <Pane layoutX="107.0" layoutY="104.0" prefHeight="273.0" prefWidth="369.0" style="-fx-background-color: white;">
          <children>
             <ImageView fitHeight="59.0" fitWidth="72.0" layoutX="36.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
@@ -30,23 +25,28 @@
                </image>
             </ImageView>
             <PasswordField fx:id="passwordF" alignment="CENTER" layoutX="129.0" layoutY="137.0" prefHeight="25.0" prefWidth="149.0" promptText="Password" style="-fx-border-color: #ebb000;" />
-            <Label fx:id="labelFp" alignment="CENTER" layoutX="77.0" layoutY="191.0" prefHeight="20.0" prefWidth="252.0" style="-fx-background-color: white;" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="LabelFu" layoutX="129.0" layoutY="21.0" prefHeight="17.0" prefWidth="149.0" style="-fx-background-color: white;" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
             <Button fx:id="LoginBtn" layoutX="149.0" layoutY="229.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="16.0" prefWidth="107.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Login" textFill="#ebb000">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
+            <Label fx:id="labelFp" alignment="CENTER" layoutX="77.0" layoutY="191.0" prefHeight="20.0" prefWidth="252.0" textFill="#ffffffd6">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="LabelFu" layoutX="129.0" layoutY="21.0" prefHeight="17.0" prefWidth="149.0" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
+      <ImageView fitHeight="31.0" fitWidth="301.0" layoutX="141.0" layoutY="44.0" pickOnBounds="true">
+         <image>
+            <Image url="@Untitled-1.png" />
+         </image>
+      </ImageView>
 
    </children>
 </Pane>

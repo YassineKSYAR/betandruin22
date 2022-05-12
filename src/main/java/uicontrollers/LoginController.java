@@ -31,10 +31,10 @@ public class LoginController implements Controller{
 
 
     @FXML
-    private Label labelFu;
+    private Label labelFu=new Label();
 
     @FXML
-    private Label labelFp ;
+    private Label labelFp=new Label();
 
     public LoginController(BlFacade bl) {
         businessLogic = bl;
@@ -70,6 +70,8 @@ public class LoginController implements Controller{
                 }
                else if (userNameF.getText().equals("") || passwordF.getText().equals("")) {
                     labelFu.setText("A field is empty!!");
+                    labelFu.setStyle("-fx-background-color: red");
+                    labelFp.setStyle("-fx-background-color: white");
                 }
 
 
@@ -77,6 +79,8 @@ public class LoginController implements Controller{
             else {
                 System.out.println(user);
                 labelFp.setText("UserName or password is incorrect!!");
+                labelFu.setStyle("-fx-background-color: white");
+                labelFp.setStyle("-fx-background-color: #c72424");
 
             }
         }catch (Exception e){
