@@ -1,13 +1,17 @@
 package uicontrollers;
 
 import businessLogic.BlFacade;
+import domain.User;
+import emailsends.SendConfirmation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import ui.*;
 
 import java.io.IOException;
@@ -15,8 +19,13 @@ import java.io.IOException;
 public class RegisterController implements Controller {
     private BlFacade businessLogic;
 
+    private Scene scene;
+    private Window confirm;
+
 
     private Home home;
+
+
 
     @FXML
     private PasswordField cpasswordF;
@@ -71,19 +80,17 @@ public class RegisterController implements Controller {
 
         }
         else {
-                businessLogic.createU(fnameF.getText(), lnameF.getText(), userNameF.getText(), emailF.getText(), passwordF.getText());
-               Stage stage =(Stage) registerBtn.getScene().getWindow();
-               home.showLogin();
+            User user=new User(fnameF.getText(), lnameF.getText(), userNameF.getText(), emailF.getText(), passwordF.getText());
+            Stage stage = (Stage) registerBtn.getScene().getWindow();
 
-
-
+            SendConfirmation sendConfirmation =new SendConfirmation();
+            int code= sendConfirmation.sendEmail(user.getEmail(),user.getFname(),user.getLname());
+            new Confirmation(businessLogic,user,code);
+            stage.close();
         }
 
+
     }
-
-
-
-
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
