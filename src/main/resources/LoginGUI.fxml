@@ -9,48 +9,45 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="409.0" prefWidth="590.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.LoginController">
+<Pane prefHeight="454.0" prefWidth="582.0" style="-fx-background-color: #ebb000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.LoginController">
    <children>
-      <ImageView fx:id="backImage" fitHeight="409.0" fitWidth="590.0">
+      <ImageView fitHeight="31.0" fitWidth="301.0" layoutX="141.0" layoutY="44.0" pickOnBounds="true">
          <image>
-            <Image url="Background.jpeg" />
+            <Image url="@Untitled-1.png" />
          </image>
       </ImageView>
-      <Label fx:id="userNameLab" alignment="TOP_RIGHT" layoutX="143.0" layoutY="179.0" text="UserName :">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <TextField fx:id="userNameF" alignment="CENTER" layoutX="232.0" layoutY="176.0" promptText="User Name" />
-      <Label fx:id="passwordLab" alignment="TOP_RIGHT" layoutX="143.0" layoutY="231.0" prefHeight="20.0" prefWidth="76.0" text="Password :">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="passwordF" alignment="CENTER" layoutX="236.0" layoutY="228.0" prefHeight="25.0" prefWidth="149.0" promptText="Password" />
-      <Button fx:id="LoginBtn" layoutX="248.0" layoutY="286.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="40.0" prefWidth="99.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Login" textFill="#00b6ed">
-         <font>
-            <Font name="System Bold" size="19.0" />
-         </font></Button>
-      <Label alignment="CENTER" layoutX="238.0" layoutY="118.0" prefHeight="17.0" prefWidth="137.0">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="labelFp" alignment="CENTER" layoutX="2.0" layoutY="257.0" prefHeight="20.0" prefWidth="590.0" textFill="#f00020">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <Label fx:id="LabelFu" layoutX="236.0" layoutY="120.0" prefHeight="17.0" prefWidth="149.0" textFill="#f00020">
-         <font>
-            <Font name="System Bold" size="14.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="logoImage" fitHeight="59.0" fitWidth="330.0" layoutX="132.0" layoutY="38.0">
-         <image>
-            <Image url="Untitled-1.png" />
-         </image>
-      </ImageView>
+      <Pane layoutX="107.0" layoutY="104.0" prefHeight="273.0" prefWidth="369.0" style="-fx-background-color: white;">
+         <children>
+            <ImageView fitHeight="59.0" fitWidth="72.0" layoutX="36.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@login.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="userNameF" alignment="CENTER" layoutX="127.0" layoutY="64.0" promptText="User Name" style="-fx-border-color: #ebb000;" />
+            <ImageView fitHeight="59.0" fitWidth="88.0" layoutX="36.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@psd.png" />
+               </image>
+            </ImageView>
+            <PasswordField fx:id="passwordF" alignment="CENTER" layoutX="129.0" layoutY="137.0" prefHeight="25.0" prefWidth="149.0" promptText="Password" style="-fx-border-color: #ebb000;" />
+            <Label fx:id="labelFp" alignment="CENTER" layoutX="77.0" layoutY="191.0" prefHeight="20.0" prefWidth="252.0" style="-fx-background-color: white;" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="LabelFu" layoutX="129.0" layoutY="21.0" prefHeight="17.0" prefWidth="149.0" style="-fx-background-color: white;" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Button fx:id="LoginBtn" layoutX="149.0" layoutY="229.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="16.0" prefWidth="107.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Login" textFill="#ebb000">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <ImageView fitHeight="454.0" fitWidth="582.0" pickOnBounds="true" preserveRatio="true" />
+
    </children>
 </Pane>
