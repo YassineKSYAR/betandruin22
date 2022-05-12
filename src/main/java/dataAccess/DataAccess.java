@@ -281,7 +281,8 @@ public class DataAccess  {
 		public void removeEvent(Event event){
 			db.getTransaction().begin();
 			Event ev = db.find(Event.class, event.getEventNumber());
-
+			for (Question Q: ev.getQuestions())
+				ev.getQuestions().remove(Q);
 			db.remove(ev);
 			db.getTransaction().commit();
 			System.out.println("object removed id:" + event.getEventNumber() + ", description:"+ event.getDescription());
@@ -312,16 +313,37 @@ public class DataAccess  {
 		db.getTransaction().commit();
 		return r;
 	}
+	public boolean findEventById(int eventId){
+		System.out.println(">> DataAccess: getEvent");
+		TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev WHERE ev.eventNumber="+eventId,
+				Event.class);
+		List<Event> ev = query.getResultList();
+		System.out.println();
+		if(ev.isEmpty()){
+			return false;
+		}else if(!ev.isEmpty()){
+			return true;
+		}
+		return false;
+	}
 
 	public List<Bet> publishResult(int eventId,String winner){
-		Results WinningResults = getResults(eventId,winner).get(0);
-		System.out.println(WinningResults);
-		List<Bet> WinningBets = getBetByResultID(WinningResults.getIdR());
-		System.out.println(WinningBets);
-		for(Bet B:WinningBets){
-			addMoney((int) B.getIdUser(),B.getAmount()*B.getFee());
+		List<Bet> WinningBets = null;
+		if(findEventById(eventId) == false){
+			System.out.println("Event is not available anymore!!");
+			System.out.println(findEventById(eventId));
+		}else if(findEventById(eventId) == true){
+			Results WinningResults = getResults(eventId,winner).get(0);
+			System.out.println(WinningResults);
+			WinningBets = getBetByResultID(WinningResults.getIdR());
+			System.out.println(WinningBets);
+			for(Bet B:WinningBets){
+				addMoney((int) B.getIdUser(),B.getAmount()*B.getFee());
+			}
+			System.out.println(findEventById(eventId));
+			Event ev = getEvent(eventId).get(0);
+			removeEvent(ev);
 		}
-
 		return WinningBets;
 	}
 
