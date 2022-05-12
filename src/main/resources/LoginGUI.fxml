@@ -47,7 +47,6 @@
             </Button>
          </children>
       </Pane>
-      <ImageView fitHeight="454.0" fitWidth="582.0" pickOnBounds="true" preserveRatio="true" />
 
    </children>
 </Pane>
