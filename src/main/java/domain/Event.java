@@ -27,9 +27,12 @@ public class Event implements Serializable {
 	private String description; 
 	private Date eventDate;
 
-	/////////////////////////////////////
-	public String Status;
+
+
+
+
 	////////////////////////////////////
+	public boolean isPublished;
 
 	@OneToMany (fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
 	private Vector<Question> questions = new Vector<Question>();
@@ -56,6 +59,12 @@ public class Event implements Serializable {
 		this.description = description;
 		this.eventDate=eventDate;
 	}
+	public Event(Integer eventNumber, String description,Date eventDate,Boolean isPublished) {
+		this.eventNumber = eventNumber;
+		this.description = description;
+		this.eventDate = eventDate;
+		this.isPublished=isPublished;
+	}
 
 	public Integer getEventNumber() {
 		return eventNumber;
@@ -81,10 +90,23 @@ public class Event implements Serializable {
 		this.eventDate = eventDate;
 	}
 
+	public boolean isPublished() {
+		return isPublished;
+	}
+
+	public void setPublished(boolean published) {
+		isPublished = published;
+	}
 
 	@Override
-	public String toString(){
-		return eventNumber+";"+description+";"+eventDate+";"+Status;
+	public String toString() {
+		return "Event{" +
+				"eventNumber=" + eventNumber +
+				", description='" + description + '\'' +
+				", eventDate=" + eventDate +
+				", isPublished=" + isPublished +
+				", questions=" + questions +
+				'}';
 	}
 
 	/**

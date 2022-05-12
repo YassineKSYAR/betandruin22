@@ -1,6 +1,7 @@
 package uicontrollers;
 
 import businessLogic.BlFacade;
+import domain.Event;
 import domain.Matches;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,6 +26,8 @@ public class PublishResultController implements Controller{
     MainUser mainUser;
 
     private List<Matches> events = new ArrayList<>();
+
+
 
 
     @FXML
@@ -56,6 +59,7 @@ public class PublishResultController implements Controller{
 
     @FXML
     private TextField eventStatus;
+     Event event;
 
 
     public PublishResultController(BlFacade bl){
@@ -66,6 +70,7 @@ public class PublishResultController implements Controller{
 
     @FXML
     void initialize(){
+
         events = Api.setEvents();
         Index = 0;
         setInputFeild(Index);
@@ -77,6 +82,14 @@ public class PublishResultController implements Controller{
         awayTeamScore.setDisable(true);
         winnerTeam.setDisable(true);
         eventStatus.setDisable(true);
+
+        this.event=businessLogic.getEvent(Long.parseLong(idEvent.getText())).get(0);
+        if (this.event.isPublished()==true){
+            btnPublish.setDisable(true);
+        }else {
+            btnPublish.setDisable(false);
+        }
+
     }
 
     public void clearInput(){
@@ -87,6 +100,7 @@ public class PublishResultController implements Controller{
         homeTeamScore.setText("");
         awayTeamScore.setText("");
         winnerTeam.setText("");
+
     }
 
     public void setInputFeild(int Ind){
@@ -118,15 +132,25 @@ public class PublishResultController implements Controller{
 
     @FXML
     void onNext(ActionEvent event) {
+
+
         clearInput();
         if(Index < events.size()-1){
             Index++;
             setInputFeild(Index);
+            this.event=businessLogic.getEvent(Long.parseLong(idEvent.getText())).get(0);
             btnPrevious.setDisable(false);
             System.out.println(events.get(Index));
+
         }else{
             btnNext.setDisable(true);
         }
+        if (this.event.isPublished()==true){
+            btnPublish.setDisable(true);
+        }else {
+            btnPublish.setDisable(false);
+        }
+
     }
 
     @FXML
@@ -135,10 +159,16 @@ public class PublishResultController implements Controller{
         if(Index > 0){
             Index--;
             setInputFeild(Index);
+            this.event=businessLogic.getEvent(Long.parseLong(idEvent.getText())).get(0);
             btnNext.setDisable(false);
             System.out.println(events.get(Index));
         }else{
             btnPrevious.setDisable(true);
+        }
+        if (this.event.isPublished()==true){
+            btnPublish.setDisable(true);
+        }else {
+            btnPublish.setDisable(false);
         }
     }
 
@@ -148,11 +178,17 @@ public class PublishResultController implements Controller{
             System.out.println("Event not finished yet");
         }else if((events.get(Index).status).equals("IN_PLAY") && (events.get(Index).status).equals("PAUSED")){
             System.out.println("Event not finished yet");
-        }else if((events.get(Index).status).equals("FINISHED")){
+        }else if((events.get(Index).status).equals("FINISHED")&&winnerTeam.getText().length()>0){
             int id = Integer.parseInt(idEvent.getText());
             String win = winnerTeam.getText();
             System.out.println(win + " " + id);
             businessLogic.publishResult(id,win);
+        }
+        this.event=businessLogic.getEvent(Long.parseLong(idEvent.getText())).get(0);
+        if (this.event.isPublished()==true){
+            btnPublish.setDisable(true);
+        }else {
+            btnPublish.setDisable(false);
         }
 
     }

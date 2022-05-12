@@ -62,7 +62,7 @@ public class DataAccess  {
 
 				DateTime dateTime = ISODateTimeFormat.dateTimeParser().parseDateTime(ev.utcDate);
 
-				Event event = new Event(ev.id,ev.homeTeam.name + "-" + ev.awayTeam.name,UtilDate.newDate(dateTime.getYear(),dateTime.getMonthOfYear()-1,dateTime.getDayOfMonth()));
+				Event event = new Event(ev.id,ev.homeTeam.name + "-" + ev.awayTeam.name,UtilDate.newDate(dateTime.getYear(),dateTime.getMonthOfYear()-1,dateTime.getDayOfMonth()),false);
 
 				//Question q2;
 				Question q1Test;
@@ -180,11 +180,10 @@ public class DataAccess  {
 
 
 			for(Matches ev: events){
-
+				Event event=findEventId(ev.id);
 				DateTime dateTime = ISODateTimeFormat.dateTimeParser().parseDateTime(ev.utcDate);
+				setQuestion(ev.id,event.getQuestions(),ev.homeTeam.name,ev.awayTeam.name);
 
-
-				setQuestion(ev.id,getIDQuestion(),ev.homeTeam.name,ev.awayTeam.name);
 			}
 
 
@@ -206,7 +205,7 @@ public class DataAccess  {
 	 */
 
 
-	public List<Question> setQuestion(int id,List<Question> questions,String homeTeam,String awayTeam){
+	public List<Question> setQuestion(int id,Vector<Question> questions,String homeTeam,String awayTeam){
 		for (Question question:questions) {
 			Results r1 = new Results(id, question.getQuestionNumber(), homeTeam, 2.5F);
 			Results r2 = new Results(id, question.getQuestionNumber(), awayTeam, 2.5F);
@@ -281,8 +280,6 @@ public class DataAccess  {
 		public void removeEvent(Event event){
 			db.getTransaction().begin();
 			Event ev = db.find(Event.class, event.getEventNumber());
-			for (Question Q: ev.getQuestions())
-				ev.getQuestions().remove(Q);
 			db.remove(ev);
 			db.getTransaction().commit();
 			System.out.println("object removed id:" + event.getEventNumber() + ", description:"+ event.getDescription());
@@ -314,7 +311,6 @@ public class DataAccess  {
 		return r;
 	}
 	public boolean findEventById(int eventId){
-		System.out.println(">> DataAccess: getEvent");
 		TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev WHERE ev.eventNumber="+eventId,
 				Event.class);
 		List<Event> ev = query.getResultList();
@@ -326,13 +322,23 @@ public class DataAccess  {
 		}
 		return false;
 	}
+		public Event findEventId(int eventId){
+			System.out.println(">> DataAccess: getEvent");
+			TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev WHERE ev.eventNumber="+eventId,
+					Event.class);
+			List<Event> ev = query.getResultList();
+			System.out.println();
+			return ev.get(0);
+		}
 
 	public List<Bet> publishResult(int eventId,String winner){
 		List<Bet> WinningBets = null;
+		Event event1=findEventId(eventId);
 		if(findEventById(eventId) == false){
 			System.out.println("Event is not available anymore!!");
 			System.out.println(findEventById(eventId));
 		}else if(findEventById(eventId) == true){
+			if(event1.isPublished()==false){
 			Results WinningResults = getResults(eventId,winner).get(0);
 			System.out.println(WinningResults);
 			WinningBets = getBetByResultID(WinningResults.getIdR());
@@ -340,20 +346,29 @@ public class DataAccess  {
 			for(Bet B:WinningBets){
 				addMoney((int) B.getIdUser(),B.getAmount()*B.getFee());
 			}
-			System.out.println(findEventById(eventId));
-			Event ev = getEvent(eventId).get(0);
-			removeEvent(ev);
+			Published(event1,true);
+
+		}
+
 		}
 		return WinningBets;
 	}
 
-		public  List<Question>  getIDQuestion(){
 
-			TypedQuery<Question> q = db.createQuery("SELECT u FROM Question u ", Question.class);
-
-			List<Question> questions = q.getResultList();
-			return questions;
+		public void Published(Event event,Boolean published){
+			db.getTransaction().begin();
+			Event ev =db.find(Event.class,event);
+			ev.setPublished(published);
+			db.persist(ev);
+			db.getTransaction().commit();
+			System.out.println(ev.toString() + " has been updated");
 		}
+
+
+
+
+
+
 
 	public  List<Results>  getResults(int idEvent,String winner){
 		System.out.println(">> DataAccess: getResults");
@@ -571,6 +586,14 @@ public class DataAccess  {
 			List<Results> results = r1.getResultList();
 			return results;
 	 }
+
+		public List<Results> getResult(int  idEvent){
+			System.out.println(">> DataAccess: getResults");
+			TypedQuery<Results> r1 = db.createQuery("SELECT u FROM Results u where u.idevent="+idEvent,
+					Results.class);
+			List<Results> results = r1.getResultList();
+			return results;
+		}
 
     public  List<Bet>  getBet(User user){
 			System.out.println(">> DataAccess: getBet");
