@@ -35,6 +35,10 @@ public class MainUserController implements Controller{
 
 
 
+    @FXML
+    void onContactUs(ActionEvent event) {
+        mainUser.showContactUs();
+    }
 
 
     @Override

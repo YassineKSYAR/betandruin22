@@ -60,6 +60,7 @@ public class Home {
             if(controllerClass == RegisterController.class){
                 return new RegisterController(businessLogic);
             }
+
             else {
                 // default behavior for controllerFactory:
                 try {
@@ -86,6 +87,7 @@ public class Home {
         login = load("/LoginGUI.fxml");
         register = load("/RegisterGUI.fxml");
 
+
         showMain();
 
     }
@@ -104,8 +106,9 @@ public class Home {
     }
 
     public void showRegister() {
-        setupScene(register.ui, "Register", 696, 554);
+        setupScene(register.ui, "Register", 696, 550);
     }
+
 
 
     private void setupScene(Parent ui, String title, int width, int height) {

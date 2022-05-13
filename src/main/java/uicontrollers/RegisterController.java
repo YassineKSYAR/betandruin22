@@ -2,7 +2,7 @@ package uicontrollers;
 
 import businessLogic.BlFacade;
 import domain.User;
-import emailsends.SendConfirmation;
+import emailsends.SendEmail;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -83,8 +83,8 @@ public class RegisterController implements Controller {
             User user=new User(fnameF.getText(), lnameF.getText(), userNameF.getText(), emailF.getText(), passwordF.getText());
             Stage stage = (Stage) registerBtn.getScene().getWindow();
 
-            SendConfirmation sendConfirmation =new SendConfirmation();
-            int code= sendConfirmation.sendEmail(user.getEmail(),user.getFname(),user.getLname());
+            SendEmail sendEmail =new SendEmail();
+            int code= sendEmail.sendEmail(user.getEmail(),user.getFname(),user.getLname());
             new Confirmation(businessLogic,user,code);
             stage.close();
         }

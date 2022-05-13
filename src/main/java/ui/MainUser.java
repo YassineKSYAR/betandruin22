@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 
 public class MainUser {
 
-    private Window mainLag, makeBet,depMoeny,removeBet,showMvm;
+    private Window mainLag, makeBet,depMoeny,removeBet,showMvm,contactUs;
 
     private BlFacade businessLogic;
     private Stage stage;
@@ -72,6 +72,9 @@ public class MainUser {
 
                 return new ShowMovementsController(businessLogic);
             }
+            if(controllerClass == ContactUs.class){
+                return new ContactUs(businessLogic);
+            }
             else {
                 // default behavior for controllerFactory:
                 try {
@@ -99,6 +102,7 @@ public class MainUser {
         depMoeny=load("/DepMoney.fxml");
         removeBet=load("/RemoveBet.fxml");
         showMvm=load("/ShowMovements.fxml");
+        contactUs=load("/ContactUs.fxml");
         showMain();
 
     }
@@ -109,7 +113,7 @@ public class MainUser {
 
 
     public void showMain(){
-        setupScene(mainLag.ui, "MainTitle", 393, 289);
+        setupScene(mainLag.ui, "MainTitle", 393, 335);
     }
 
     public void showMakeBet() {
@@ -124,6 +128,10 @@ public class MainUser {
     public void showMvm(){
         setupScene(showMvm.ui, "ShowMovements", 749, 586);}
 
+
+    public void showContactUs() {
+        setupScene(contactUs.ui, "ContactUs", 610, 485);
+    }
 
 
 

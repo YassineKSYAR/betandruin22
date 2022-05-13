@@ -3,7 +3,7 @@ package uicontrollers;
 
 import businessLogic.BlFacade;
 import domain.User;
-import emailsends.SendConfirmation;
+import emailsends.SendEmail;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -77,8 +77,8 @@ public class VerificationEmail implements Controller{
 
     @FXML
     void onSendCode(ActionEvent event) {
-        SendConfirmation sendConfirmation =new SendConfirmation();
-        this.code= sendConfirmation.sendEmail(userConfirm.getEmail(), userConfirm.getFname(), userConfirm.getLname());
+        SendEmail sendEmail =new SendEmail();
+        this.code= sendEmail.sendEmail(userConfirm.getEmail(), userConfirm.getFname(), userConfirm.getLname());
         error.setText("");
         error.setStyle("-fx-background-color: white");
         sendOk.setText("Your new code has been sent");
