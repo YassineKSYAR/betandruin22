@@ -8,16 +8,15 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import  javafx.scene.image.ImageView;
-import javafx.scene.image.Image;
+
 import javafx.stage.Stage;
-import javafx.util.Duration;
+
 import ui.Home;
 import javafx.event.ActionEvent;
 import ui.MainGUI;
 import ui.MainUser;
 
-import javax.management.Notification;
+
 
 
 public class VerificationEmail implements Controller{
