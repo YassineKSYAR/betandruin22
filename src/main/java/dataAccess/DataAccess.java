@@ -338,7 +338,7 @@ public class DataAccess  {
 		if(findEventById(eventId) == false){
 			System.out.println("Event is not available anymore!!");
 			System.out.println(findEventById(eventId));
-		}else if(findEventById(eventId) == true){
+		}else if(findEventById(eventId) == true&& winner.length()>0){
 			if(event1.isPublished()==false){
 			Results WinningResults = getResults(eventId,winner).get(0);
 			Results losers = getResults(eventId,loser).get(0);
@@ -360,6 +360,9 @@ public class DataAccess  {
 
 		}
 
+		}
+		else if (winner.length()==0) {
+			Published(event1,true);
 		}
 		return WinningBets;
 	}

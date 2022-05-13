@@ -178,7 +178,7 @@ public class PublishResultController implements Controller{
             System.out.println("Event not finished yet");
         }else if((events.get(Index).status).equals("IN_PLAY") && (events.get(Index).status).equals("PAUSED")){
             System.out.println("Event not finished yet");
-        }else if((events.get(Index).status).equals("FINISHED")&&winnerTeam.getText().length()>0){
+        }else if((events.get(Index).status).equals("FINISHED")){
             int id = Integer.parseInt(idEvent.getText());
             String win = winnerTeam.getText();
             String loser=null;
