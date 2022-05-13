@@ -1,14 +1,27 @@
 package uicontrollers;
 
+import businessLogic.BlFacade;
+import businessLogic.BlFacadeImplementation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 import ui.Home;
+
 import ui.MainGUI;
 import ui.MainUser;
 
+
+
 public class MainUserController implements Controller{
 
+
     private MainUser mainUser;
+
+
+    @FXML
+    private Button logOutBtn;
 
 
     @FXML
@@ -39,6 +52,15 @@ public class MainUserController implements Controller{
     void onContactUs(ActionEvent event) {
         mainUser.showContactUs();
     }
+    @FXML
+    void onlogOut(ActionEvent event) {
+        Stage stage=(Stage) logOutBtn.getScene().getWindow();
+        stage.close();
+        this.mainUser.user=null;
+        Home home=new Home();
+
+        home.showMain();
+    }
 
 
     @Override
@@ -54,6 +76,7 @@ public class MainUserController implements Controller{
 
     @Override
     public void setHomeApp(Home home) {
+
     }
 
 

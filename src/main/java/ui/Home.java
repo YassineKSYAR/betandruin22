@@ -1,6 +1,7 @@
 package ui;
 
 import businessLogic.BlFacade;
+import businessLogic.BlFacadeImplementation;
 import domain.User;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -38,6 +39,17 @@ public class Home {
                 e.printStackTrace();
             }
         });
+
+    }
+
+    public  Home() {
+        setBusinessLogic(new BlFacadeImplementation());
+            try {
+                init(new Stage());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
 
     }
 

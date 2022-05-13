@@ -9,7 +9,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.MainUserController">
     <children>
-      <ImageView fitHeight="430.0" fitWidth="404.0" pickOnBounds="true">
+      <ImageView fitHeight="436.0" fitWidth="402.0" pickOnBounds="true">
          <image>
             <Image url="@Background.jpeg" />
          </image>
@@ -40,7 +40,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Button>
-      <Button fx:id="contactUs1" layoutX="108.0" layoutY="316.0" mnemonicParsing="false" onAction="#onlogOut" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Log out" textFill="#ffae00">
+      <Button fx:id="logOutBtn" layoutX="108.0" layoutY="316.0" mnemonicParsing="false" onAction="#onlogOut" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Log out" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
