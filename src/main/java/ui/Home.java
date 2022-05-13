@@ -104,7 +104,7 @@ public class Home {
     }
 
     public void showRegister() {
-        setupScene(register.ui, "Register", 700, 495);
+        setupScene(register.ui, "Register", 696, 554);
     }
 
 

@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import ui.Home;
 import ui.MainGUI;
@@ -24,9 +25,9 @@ public class LoginController implements Controller{
     private PasswordField passwordF;
 
 
-
     @FXML
     private TextField userNameF;
+
 
 
 
@@ -35,6 +36,8 @@ public class LoginController implements Controller{
 
     @FXML
     private Label labelFp=new Label();
+
+    private Home home;
 
     public LoginController(BlFacade bl) {
         businessLogic = bl;
@@ -88,6 +91,13 @@ public class LoginController implements Controller{
         }
         return user;
     }
+    @FXML
+    void onSignUp(MouseEvent event) {
+        System.out.println(home);
+        home.showRegister();
+    }
+
+
 
 
     @Override
@@ -102,6 +112,7 @@ public class LoginController implements Controller{
 
     @Override
     public void setHomeApp(Home home) {
+        this.home=home;
 
     }
 }
