@@ -10,44 +10,44 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="454.0" prefWidth="582.0" style="-fx-background-color: #ebb000;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.LoginController">
+<Pane prefHeight="454.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.LoginController">
    <children>
-      <Pane layoutX="107.0" layoutY="104.0" prefHeight="273.0" prefWidth="369.0" style="-fx-background-color: white;">
+      <ImageView fitHeight="454.0" fitWidth="582.0">
+         <image>
+            <Image url="@Background.jpeg" />
+         </image>
+      </ImageView>
+      <Pane layoutX="107.0" layoutY="105.0" prefHeight="273.0" prefWidth="369.0" style="-fx-background-color: white; -fx-background-radius: 30px;">
          <children>
-            <ImageView fitHeight="59.0" fitWidth="72.0" layoutX="36.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="59.0" fitWidth="72.0" layoutX="70.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@login.png" />
                </image>
             </ImageView>
-            <TextField fx:id="userNameF" alignment="CENTER" layoutX="127.0" layoutY="64.0" promptText="User Name" style="-fx-border-color: #ebb000;" />
-            <ImageView fitHeight="59.0" fitWidth="88.0" layoutX="36.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+            <TextField fx:id="userNameF" alignment="CENTER" layoutX="163.0" layoutY="78.0" promptText="User Name" style="-fx-border-color: #ebb000; -fx-background-radius: 20px; -fx-border-radius: 20px;" />
+            <ImageView fitHeight="59.0" fitWidth="88.0" layoutX="70.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@psd.png" />
                </image>
             </ImageView>
-            <PasswordField fx:id="passwordF" alignment="CENTER" layoutX="129.0" layoutY="137.0" prefHeight="25.0" prefWidth="149.0" promptText="Password" style="-fx-border-color: #ebb000;" />
-            <Button fx:id="LoginBtn" layoutX="149.0" layoutY="229.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="16.0" prefWidth="107.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Login" textFill="#ebb000">
+            <PasswordField fx:id="passwordF" alignment="CENTER" layoutX="164.0" layoutY="137.0" prefHeight="25.0" prefWidth="149.0" promptText="Password" style="-fx-border-color: #ebb000; -fx-background-radius: 20px; -fx-border-radius: 20px;" />
+            <Button fx:id="LoginBtn" layoutX="185.0" layoutY="220.0" mnemonicParsing="false" onAction="#onLogin" prefHeight="16.0" prefWidth="107.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Login" textFill="#ebb000">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Button>
-            <Label fx:id="labelFp" alignment="CENTER" layoutX="77.0" layoutY="191.0" prefHeight="20.0" prefWidth="252.0" textFill="#ffffffd6">
+            <Label fx:id="labelFp" alignment="CENTER" layoutX="100.0" layoutY="187.0" prefHeight="20.0" prefWidth="252.0" textFill="#ffffffd6">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="LabelFu" layoutX="129.0" layoutY="21.0" prefHeight="17.0" prefWidth="149.0" textFill="WHITE">
+            <Label fx:id="LabelFu" layoutX="164.0" layoutY="42.0" prefHeight="17.0" prefWidth="149.0" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
          </children>
       </Pane>
-      <ImageView fitHeight="31.0" fitWidth="301.0" layoutX="141.0" layoutY="44.0" pickOnBounds="true">
-         <image>
-            <Image url="@Untitled-1.png" />
-         </image>
-      </ImageView>
       <Hyperlink alignment="CENTER" layoutX="316.0" layoutY="399.0" onMouseClicked="#onSignUp" prefHeight="31.0" prefWidth="126.0" text="Sign Up" textFill="#0099ff" underline="true">
          <font>
             <Font name="System Bold Italic" size="24.0" />
@@ -58,6 +58,11 @@
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
+      <ImageView fitHeight="78.0" fitWidth="451.0" layoutX="75.0" layoutY="14.0" opacity="0.26" pickOnBounds="true">
+         <image>
+            <Image url="@Untitled-1.png" />
+         </image>
+      </ImageView>
 
    </children>
 </Pane>

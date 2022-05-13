@@ -16,12 +16,12 @@ import java.util.ResourceBundle;
 
 public class MainUser {
 
-    private Window mainLag, makeBet,depMoeny,removeBet,showMvm,contactUs;
+    private Window mainLag, makeBet,depMoney,removeBet,showMvm,contactUs;
 
     private BlFacade businessLogic;
     private Stage stage;
     private Scene scene;
-    public  User user ;
+    public  User user;
 
     public BlFacade getBusinessLogic() {
         return businessLogic;
@@ -99,7 +99,7 @@ public class MainUser {
 
         mainLag = load("/MainUser.fxml");
         makeBet= load("/MakeBet.fxml");
-        depMoeny=load("/DepMoney.fxml");
+        depMoney=load("/DepMoney.fxml");
         removeBet=load("/RemoveBet.fxml");
         showMvm=load("/ShowMovements.fxml");
         contactUs=load("/ContactUs.fxml");
@@ -120,7 +120,7 @@ public class MainUser {
         setupScene(makeBet.ui, "MakeBet", 1058, 680);
     }
     public void showDepMoeny(){
-        setupScene(depMoeny.ui, "DepositMoeny", 600, 400);}
+        setupScene(depMoney.ui, "DepositMoeny", 600, 400);}
 
     public void showRemoveBet(){
         setupScene(removeBet.ui, "RemoveBet", 1600, 584);}

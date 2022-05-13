@@ -1,11 +1,13 @@
 package uicontrollers;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import javafx.scene.control.ComboBox;
 import ui.*;
-
 
 
 public class HomeController implements Controller{
@@ -22,6 +24,20 @@ public class HomeController implements Controller{
     void onRegister(ActionEvent event) {
         home.showRegister();
     }
+
+    @FXML
+    private ComboBox<String> ComboLang;
+
+    @FXML
+    void initialize(){
+        ComboLang.getItems().addAll(
+                "en",
+                "es",
+                "eus"
+        );
+    }
+
+
 
     @Override
     public void setMainApp(MainGUI mainGUI) {

@@ -58,7 +58,7 @@ public class PublishResultController implements Controller{
 
     @FXML
     private TextField eventStatus;
-     Event event;
+    Event event;
 
 
     public PublishResultController(BlFacade bl){
@@ -82,11 +82,15 @@ public class PublishResultController implements Controller{
         winnerTeam.setDisable(true);
         eventStatus.setDisable(true);
 
-        this.event=businessLogic.getEvent(Long.parseLong(idEvent.getText())).get(0);
-        if (this.event.isPublished()==true){
-            btnPublish.setDisable(true);
-        }else {
-            btnPublish.setDisable(false);
+        if((businessLogic.getEvent(events.get(Index).id)) == null){
+            System.out.println("Event is not in database");
+        }else{
+            this.event=businessLogic.getEvent(events.get(0).id).get(0);
+            if (this.event.isPublished()==true){
+                btnPublish.setDisable(true);
+            }else {
+                btnPublish.setDisable(false);
+            }
         }
 
     }
@@ -99,7 +103,6 @@ public class PublishResultController implements Controller{
         homeTeamScore.setText("");
         awayTeamScore.setText("");
         winnerTeam.setText("");
-
     }
 
     public void setInputFeild(int Ind){
@@ -131,25 +134,31 @@ public class PublishResultController implements Controller{
 
     @FXML
     void onNext(ActionEvent event) {
-
-
         clearInput();
         if(Index < events.size()-1){
             Index++;
             setInputFeild(Index);
-            this.event=businessLogic.getEvent(Long.parseLong(idEvent.getText())).get(0);
+            if((businessLogic.getEvent(events.get(Index).id)) == null){
+                System.out.println("Event is not in database");
+                btnPublish.setDisable(true);
+            }else{
+                this.event=businessLogic.getEvent(events.get(Index).id).get(0);
+            }
             btnPrevious.setDisable(false);
             System.out.println(events.get(Index));
-
-        }else{
+        }else if(Index == events.size()-1){
+            setInputFeild(Index);
             btnNext.setDisable(true);
         }
-        if (this.event.isPublished()==true){
-            btnPublish.setDisable(true);
-        }else {
-            btnPublish.setDisable(false);
+        if(this.event == null){
+            System.out.println("Event is not in database");
+        }else{
+            if (this.event.isPublished()==true){
+                btnPublish.setDisable(true);
+            }else {
+                btnPublish.setDisable(false);
+            }
         }
-
     }
 
     @FXML
@@ -158,45 +167,65 @@ public class PublishResultController implements Controller{
         if(Index > 0){
             Index--;
             setInputFeild(Index);
-            this.event=businessLogic.getEvent(Long.parseLong(idEvent.getText())).get(0);
+            if((businessLogic.getEvent(events.get(Index).id)) == null){
+                System.out.println("Event is not in database");
+                btnPublish.setDisable(true);
+            }else{
+                this.event=businessLogic.getEvent(events.get(Index).id).get(0);
+            }
             btnNext.setDisable(false);
             System.out.println(events.get(Index));
-        }else{
+        }else if(Index == 0){
+            setInputFeild(Index);
             btnPrevious.setDisable(true);
         }
-        if (this.event.isPublished()==true){
-            btnPublish.setDisable(true);
-        }else {
-            btnPublish.setDisable(false);
+        if(this.event == null){
+            System.out.println("Event is not in database");
+        }else{
+            if (this.event.isPublished()==true){
+                btnPublish.setDisable(true);
+            }else {
+                btnPublish.setDisable(false);
+            }
         }
     }
 
     @FXML
     void onPublish(ActionEvent event) throws ParseException {
-        if((events.get(Index).status).equals("SCHEDULED")){
-            System.out.println("Event not finished yet");
-        }else if((events.get(Index).status).equals("IN_PLAY") && (events.get(Index).status).equals("PAUSED")){
-            System.out.println("Event not finished yet");
-        }else if((events.get(Index).status).equals("FINISHED")){
-            int id = Integer.parseInt(idEvent.getText());
-            String win = winnerTeam.getText();
-            String loser=null;
-            if(win.equals(homeTeam.getText())){
-                loser=awayTeam.getText();
-            }else {
-                loser=homeTeam.getText();
-            }
-            System.out.println(win + " " + id);
-            businessLogic.publishResult(id,win,loser);
-        }
-        this.event=businessLogic.getEvent(Long.parseLong(idEvent.getText())).get(0);
-        if (this.event.isPublished()==true){
+        if((businessLogic.getEvent(events.get(Index).id)) == null){
+            System.out.println("Event is not in database");
             btnPublish.setDisable(true);
-        }else {
-            btnPublish.setDisable(false);
+        }else{
+            this.event=businessLogic.getEvent(events.get(Index).id).get(0);
+            if (this.event.isPublished()==true){
+                btnPublish.setDisable(true);
+            }else {
+                btnPublish.setDisable(false);
+                if((events.get(Index).status).equals("SCHEDULED")){
+                    System.out.println("Event not finished yet");
+                }else if((events.get(Index).status).equals("IN_PLAY") && (events.get(Index).status).equals("PAUSED")){
+                    System.out.println("Event not finished yet");
+                }else if((events.get(Index).status).equals("FINISHED")){
+                    int id = Integer.parseInt(idEvent.getText());
+                    String win = winnerTeam.getText();
+                    String loser=null;
+                    if(win.equals(homeTeam.getText())){
+                        loser=awayTeam.getText();
+                    }else {
+                        loser=homeTeam.getText();
+                    }
+                    System.out.println(win + " " + id);
+                    businessLogic.publishResult(id,win,loser);
+                }
+            }
         }
-
     }
+
+    @FXML
+    void onClose(ActionEvent event) {
+        mainGUI.showMain();
+    }
+
 
     @Override
     public void setMainApp(MainGUI mainGUI) {

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="462.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.RegisterController">
+<AnchorPane prefHeight="462.0" prefWidth="696.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.RegisterController">
    <children>
       <ImageView fitHeight="511.0" fitWidth="696.0" pickOnBounds="true">
          <image>
@@ -23,25 +23,25 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="fnameF" alignment="CENTER" layoutX="438.0" layoutY="94.0" promptText="First name" style="-fx-border-color: black;" />
+      <TextField fx:id="fnameF" alignment="CENTER" layoutX="438.0" layoutY="94.0" prefHeight="28.0" prefWidth="177.0" promptText="First name" style="-fx-border-color: orange; -fx-background-radius: 20px; -fx-border-radius: 20px;" />
       <Label fx:id="lnameLab" alignment="TOP_RIGHT" layoutX="271.0" layoutY="144.0" prefHeight="17.0" prefWidth="129.0" text="Laste name :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="lnameF" alignment="CENTER" layoutX="438.0" layoutY="141.0" promptText="Laste name" style="-fx-border-color: black;" />
+      <TextField fx:id="lnameF" alignment="CENTER" layoutX="438.0" layoutY="141.0" prefHeight="28.0" prefWidth="177.0" promptText="Laste name" style="-fx-border-color: orange; -fx-background-radius: 20px; -fx-border-radius: 20px;" />
       <Label fx:id="userNameLab" alignment="TOP_RIGHT" layoutX="271.0" layoutY="187.0" prefHeight="17.0" prefWidth="129.0" text="UserName :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="userNameF" alignment="CENTER" layoutX="438.0" layoutY="184.0" promptText="User name" style="-fx-border-color: black;" />
+      <TextField fx:id="userNameF" alignment="CENTER" layoutX="438.0" layoutY="184.0" prefHeight="28.0" prefWidth="177.0" promptText="User name" style="-fx-border-color: orange; -fx-background-radius: 20px; -fx-border-radius: 20px;" />
       <Label fx:id="emailLab" alignment="TOP_RIGHT" layoutX="271.0" layoutY="235.0" prefHeight="17.0" prefWidth="129.0" text="Email :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField fx:id="emailF" alignment="CENTER" layoutX="438.0" layoutY="232.0" promptText="Email@example.com" style="-fx-border-color: black;" />
+      <TextField fx:id="emailF" alignment="CENTER" layoutX="438.0" layoutY="232.0" prefHeight="28.0" prefWidth="177.0" promptText="Email@example.com" style="-fx-border-color: orange; -fx-background-radius: 20px; -fx-border-radius: 20px;" />
       <Label fx:id="passwordLab" alignment="TOP_RIGHT" layoutX="271.0" layoutY="280.0" prefHeight="17.0" prefWidth="129.0" text="Password :">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -52,12 +52,12 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="registerBtn" layoutX="437.0" layoutY="403.0" mnemonicParsing="false" onAction="#onCreateUser" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Sign up" textFill="#ffae00">
+      <Button fx:id="registerBtn" layoutX="452.0" layoutY="403.0" mnemonicParsing="false" onAction="#onCreateUser" prefHeight="32.0" prefWidth="150.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Sign up" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="15.0" />
          </font></Button>
-      <PasswordField fx:id="passwordF" alignment="CENTER" layoutX="438.0" layoutY="277.0" promptText="Password" style="-fx-border-color: black;" />
-      <PasswordField fx:id="cpasswordF" alignment="CENTER" layoutX="438.0" layoutY="335.0" promptText="Confirm your password" style="-fx-border-color: black;" />
+      <PasswordField fx:id="passwordF" alignment="CENTER" layoutX="438.0" layoutY="277.0" prefHeight="28.0" prefWidth="177.0" promptText="Password" style="-fx-border-color: orange; -fx-background-radius: 20px; -fx-border-radius: 20px;" />
+      <PasswordField fx:id="cpasswordF" alignment="CENTER" layoutX="438.0" layoutY="335.0" prefHeight="28.0" prefWidth="177.0" promptText="Confirm your password" style="-fx-border-color: orange; -fx-background-radius: 20px; -fx-border-radius: 20px;" />
       <Label fx:id="labelF" alignment="CENTER" layoutX="438.0" layoutY="64.0" prefHeight="17.0" prefWidth="149.0" textFill="#f00020">
          <font>
             <Font name="System Bold" size="14.0" />
@@ -73,7 +73,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="96.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="205.0" fitWidth="274.0" layoutX="33.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@logo%20(1).png" />
          </image>

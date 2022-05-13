@@ -246,6 +246,28 @@ public class DataAccess  {
 		db.getTransaction().commit();
 	}
 
+	public void removeResult(int eventID){
+		db.getTransaction().begin();
+		TypedQuery<Results> query = db.createQuery("SELECT r FROM Results r WHERE r.idevent=?1",
+				Results.class);
+		query.setParameter(1,eventID);
+		System.out.println(query);
+		db.getTransaction().commit();
+		List<Results> Results1 = query.getResultList();
+		if(Results1 == null){
+			System.out.println("No results to delete!!!");
+		}else{
+			for(Results r: Results1){
+				db.getTransaction().begin();
+				Results R = db.find(Results.class, r);
+				//Query query = db.createQuery("DELETE FROM Results r WHERE r.idevent=:eventID");
+				db.remove(r);
+				db.getTransaction().commit();
+			}
+		}
+
+	}
+
 		/////////////////////////////////////// Create event in database ////////////////////////////
 		public Event createEvent(Date date, String eventDescription)  {
 			System.out.println(">> DataAccess: createEvent=> Date = " + date + " description = " +
@@ -278,6 +300,7 @@ public class DataAccess  {
 
 		//////////////////////////////////////////////////Remove Event///////////////////////
 		public void removeEvent(Event event){
+			removeResult(event.getEventNumber());
 			db.getTransaction().begin();
 			Event ev = db.find(Event.class, event.getEventNumber());
 			db.remove(ev);
@@ -322,7 +345,7 @@ public class DataAccess  {
 		}
 		return false;
 	}
-		public Event findEventId(int eventId){
+	public Event findEventId(int eventId){
 			System.out.println(">> DataAccess: getEvent");
 			TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev WHERE ev.eventNumber="+eventId,
 					Event.class);
@@ -366,8 +389,6 @@ public class DataAccess  {
 		}
 		return WinningBets;
 	}
-
-
 		public void Published(Event event,Boolean published){
 			db.getTransaction().begin();
 			Event ev =db.find(Event.class,event);
@@ -376,13 +397,6 @@ public class DataAccess  {
 			db.getTransaction().commit();
 			System.out.println(ev.toString() + " has been updated");
 		}
-
-
-
-
-
-
-
 	public  List<Results>  getResults(int idEvent,String winner){
 		System.out.println(">> DataAccess: getResults");
 		System.out.println(winner);
@@ -392,14 +406,7 @@ public class DataAccess  {
 			List<Results> results = r1.getResultList();
 			return results;
 	}
-
-
-
-
-
-
-
-		public Bet createBet(long idResults,int amount,float fee,long idUser){
+	public Bet createBet(long idResults,int amount,float fee,long idUser){
 
 			System.out.println(">> DataAccess: createBet=> amount"+amount);
 			Bet bet = new Bet(idResults,amount,fee,idUser);
@@ -410,7 +417,6 @@ public class DataAccess  {
 			db.getTransaction().commit();
 			return bet;
 		}
-
 		public Movements createMvm(Date date,long idResults,String type,int amount,long idUser){
 
 			System.out.println(">> DataAccess: createMvm=> Date = "+date+"amount"+amount);
@@ -447,6 +453,9 @@ public class DataAccess  {
 			TypedQuery<Event> query = db.createQuery("SELECT ev FROM Event ev WHERE ev.eventNumber="+id,
 					Event.class);
 			List<Event> event = query.getResultList();
+			if(event.size()== 0){
+				return null;
+			}
 			return event;
 		}
 
@@ -578,8 +587,6 @@ public class DataAccess  {
 				db.getTransaction().commit();
 				System.out.println(u.toString() + " has been updated");
 			}
-
-
 		}
 
 
@@ -644,8 +651,6 @@ public class DataAccess  {
 			System.out.println(b);
 			db.remove(b);
 		    db.getTransaction().commit();
-
-
 	}
 
 

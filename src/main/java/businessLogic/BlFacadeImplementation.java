@@ -183,8 +183,8 @@ public class BlFacadeImplementation implements BlFacade {
 		List<Event>  event = dbManager.getEvent(id);
 		dbManager.close();
 		return event;
-
 	}
+	
 	@WebMethod
 	public List<Question> getQuestion(long id){
 		dbManager.open(false);

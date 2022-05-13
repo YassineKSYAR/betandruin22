@@ -88,7 +88,7 @@ public class CreateEventController implements Controller {
                 localDate = datePicker.getValue();
                 if(localDate == null){
                     System.out.println("date is null");
-                    msgLbl.setStyle("-fx-text-fill: red;");
+                    LblDate.setStyle("-fx-background-color: red;-fx-background-radius: 5px;-fx-text-fill: white;");
                     LblDate.setText("Enter a Date!!");
                     createBtn.setDisable(true);
                 }else{
@@ -98,6 +98,7 @@ public class CreateEventController implements Controller {
                     System.out.println("year = " + year + " month = " + month + " day = " + day);
                     eventDate = new Date(year - 1900,month.getValue() - 1,day);
                     LblDate.setText("");
+                    LblDate.setStyle("");
                     createBtn.setDisable(false);
                 }
 
@@ -117,7 +118,6 @@ public class CreateEventController implements Controller {
                                     this.setStyle("-fx-background-color: pink");
                                 }
                             }
-
                         }
                     };
                 }
@@ -131,6 +131,9 @@ public class CreateEventController implements Controller {
         @FXML
         void onCloseBtn(ActionEvent event) {
             msgLbl.setText("");
+            LblDate.setText("");
+            msgLbl.setStyle("");
+            LblDate.setStyle("");
             eventInput.clear();
             mainGUI.showMain();
         }
@@ -142,20 +145,17 @@ public class CreateEventController implements Controller {
             if(eventDate.compareTo(currentDate) > 0) {
                 if (inputEvent.length() > 0 && (eventDate != null)) {
                     System.out.println("year = " + year + " month = " + month + " day = " + day);
-                    //businessLogic.createEvent(currentDate,description);
                     businessLogic.createEvent(eventDate , inputEvent);
                     System.out.println(localDate.toString());
-                    msgLbl.setStyle("-fx-text-fill: green;");
+                    msgLbl.setStyle("-fx-background-color: green;-fx-background-radius: 5px;-fx-text-fill: white;");
                     msgLbl.setText("Event created");
-                    System.out.println("Event created");
                     eventInput.setText("");
                 }else {
-                    msgLbl.setStyle("-fx-text-fill: red;");
+                    msgLbl.setStyle("-fx-background-color: red;-fx-background-radius: 5px;-fx-text-fill: white;");
                     msgLbl.setText("Enter event details!!");
-                    System.out.println("Event not created");
                 }
             }else{
-                msgLbl.setStyle("-fx-text-fill: red;");
+                msgLbl.setStyle("-fx-background-color: red;-fx-background-radius: 5px;-fx-text-fill: white;");
                 msgLbl.setText("This date is in the past!!");
             }
 

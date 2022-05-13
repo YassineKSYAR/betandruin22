@@ -135,6 +135,7 @@ public class RemoveEventController implements Controller{
     @FXML
     void onCloseBtn(ActionEvent event) {
         lblMessage.setText("");
+        lblMessage.setStyle("");
         tblEvent.getItems().clear();
         mainGUI.showMain();
     }
@@ -146,13 +147,13 @@ public class RemoveEventController implements Controller{
 
         if(ev == null){
             System.out.println("There's no event!!");
-            lblMessage.setStyle("-fx-text-fill: red;");
+            lblMessage.setStyle("-fx-background-color: red;-fx-background-radius: 5px;-fx-text-fill: white;");
             lblMessage.setText("No event is selected!!");
         }else{
             businessLogic.removeEventQuestions(ev);
             businessLogic.removeEvent(ev);
             System.out.println("Event has been deleted :) :)");
-            lblMessage.setStyle("-fx-text-fill: green;");
+            lblMessage.setStyle("-fx-background-color: green;-fx-background-radius: 5px;-fx-text-fill: white;");
             lblMessage.setText("Event Deleted");
         }
         tblEvent.getItems().removeAll(tblEvent.getSelectionModel().getSelectedItem());
