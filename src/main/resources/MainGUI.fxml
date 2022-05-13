@@ -26,19 +26,19 @@
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="setfeeBtn" layoutX="185.0" layoutY="243.0" mnemonicParsing="false" onAction="#setFee" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Set Fee" textFill="#ffae00">
+      <Button fx:id="setfeeBtn" layoutX="185.0" layoutY="243.0" mnemonicParsing="false" onAction="#setFee" prefHeight="26.0" prefWidth="182.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="%SetFee" textFill="#ffae00">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="createEventBtn" layoutX="185.0" layoutY="151.0" mnemonicParsing="false" onAction="#createEvent" prefHeight="25.0" prefWidth="181.0" style="-fx-background-radius: 20; -fx-background-color: black;" text="Create Event" textFill="#ffae00">
+      <Button fx:id="createEventBtn" layoutX="185.0" layoutY="151.0" mnemonicParsing="false" onAction="#createEvent" prefHeight="25.0" prefWidth="181.0" style="-fx-background-radius: 20; -fx-background-color: black;" text="%CreateEvent" textFill="#ffae00">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="removeEventBtn" layoutX="185.0" layoutY="197.0" mnemonicParsing="false" onAction="#onRemoveBtn" prefHeight="25.0" prefWidth="181.0" style="-fx-background-radius: 20; -fx-background-color: black;" text="Remove Event" textFill="#ffae00">
+      <Button fx:id="removeEventBtn" layoutX="185.0" layoutY="197.0" mnemonicParsing="false" onAction="#onRemoveBtn" prefHeight="25.0" prefWidth="181.0" style="-fx-background-radius: 20; -fx-background-color: black;" text="%RemoveEvent" textFill="#ffae00">
          <font>
             <Font size="15.0" />
          </font></Button>
-      <Button fx:id="publishResultBtn" layoutX="186.0" layoutY="288.0" mnemonicParsing="false" onAction="#onPublishResult" prefHeight="32.0" prefWidth="181.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="Publish Results" textFill="#ffae00">
+      <Button fx:id="publishResultBtn" layoutX="186.0" layoutY="288.0" mnemonicParsing="false" onAction="#onPublishResult" prefHeight="32.0" prefWidth="181.0" style="-fx-background-color: black; -fx-background-radius: 20px;" text="%PublishResult" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>

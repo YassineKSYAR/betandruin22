@@ -185,15 +185,11 @@ public class DataAccess  {
 				setQuestion(ev.id,event.getQuestions(),ev.homeTeam.name,ev.awayTeam.name);
 
 			}
-
-
-
 		}
 		catch (Exception e){
 			e.printStackTrace();
 		}
 	}
-
 	/**
 	 * This method creates a question for an event, with a question text and the minimum bet
 	 *
@@ -245,23 +241,42 @@ public class DataAccess  {
 		db.persist(ev);
 		db.getTransaction().commit();
 	}
+	public void removeBet(long resultId){
+		db.getTransaction().begin();
+		TypedQuery<Bet> query = db.createQuery("SELECT b FROM Bet b WHERE b.idResults=?1",
+				Bet.class);
+		query.setParameter(1,resultId);
+		List<Bet> Bets = query.getResultList();
+		db.getTransaction().commit();
+		if(Bets == null){
+			System.out.println("No bets to delete!!!");
+		}else{
+			for(Bet bet: Bets){
+				db.getTransaction().begin();
+				Bet bet1 = db.find(Bet.class, bet);
+				db.remove(bet1);
+				db.getTransaction().commit();
+			}
 
+		}
+
+
+	}
 	public void removeResult(int eventID){
 		db.getTransaction().begin();
 		TypedQuery<Results> query = db.createQuery("SELECT r FROM Results r WHERE r.idevent=?1",
 				Results.class);
 		query.setParameter(1,eventID);
-		System.out.println(query);
 		db.getTransaction().commit();
 		List<Results> Results1 = query.getResultList();
 		if(Results1 == null){
 			System.out.println("No results to delete!!!");
 		}else{
 			for(Results r: Results1){
+				removeBet(r.getIdR());
 				db.getTransaction().begin();
 				Results R = db.find(Results.class, r);
-				//Query query = db.createQuery("DELETE FROM Results r WHERE r.idevent=:eventID");
-				db.remove(r);
+				db.remove(R);
 				db.getTransaction().commit();
 			}
 		}
@@ -389,7 +404,7 @@ public class DataAccess  {
 		}
 		return WinningBets;
 	}
-		public void Published(Event event,Boolean published){
+	public void Published(Event event,Boolean published){
 			db.getTransaction().begin();
 			Event ev =db.find(Event.class,event);
 			ev.setPublished(published);

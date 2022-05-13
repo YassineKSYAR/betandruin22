@@ -27,6 +27,6 @@
             <Image url="@logo%20(1).png" />
          </image>
       </ImageView>
-      <ComboBox fx:id="ComboLang" layoutX="167.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #ffae00;" />
+      <ComboBox fx:id="ComboLang" layoutX="167.0" layoutY="97.0" prefWidth="150.0" style="-fx-background-color: #ffae00; -fx-border-color: black; -fx-border-radius: 5px;" />
    </children>
 </AnchorPane>

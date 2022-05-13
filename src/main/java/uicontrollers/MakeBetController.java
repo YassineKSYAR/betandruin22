@@ -22,71 +22,43 @@ import utils.Dates;
 
 public class MakeBetController implements Controller {
 
-
-
     @FXML
     private Label moenyIns;
     @FXML
     private Label betCr;
-
-
     @FXML
     private Label labelBalnce;
-
-
-
-
-
-
     @FXML
     private  Spinner amountInpute=new Spinner();
-
     @FXML
     private DatePicker datepicker;
-
     @FXML
     private TableColumn<Event, Integer> ec1;
-
     @FXML
     private TableColumn<Event, String> ec2;
-
     @FXML
     private TableColumn<Event, Integer> qc1;
 
     @FXML
     private TableColumn<Event, Integer> qc2;
-
     @FXML
     private TableColumn<Results, String> r1;
-
     @FXML
     private TableColumn<Results, Float> r2;
-
     @FXML
     private TableView<Event> tblEvents;
-
     @FXML
     private TableView<Question> tblQuestions;
-
     @FXML
     private TableView<Results> tblResults;
-
     @FXML
     private Button betBtn;
-
     private MainUser mainUser;
-
-
     private List<LocalDate> holidays = new ArrayList<>();
-
     private BlFacade businessLogic;
-
-
     public MakeBetController (BlFacade bl) {
         businessLogic = bl;
     }
-
-
     @FXML
     void closeClick(ActionEvent event) {
         mainUser.showMain();
@@ -95,11 +67,13 @@ public class MakeBetController implements Controller {
 
     }
 
+    Date currentDate = new Date();
     private void setEvents(int year, int month) {
         Date date = Dates.toDate(year,month);
-
         for (Date day : businessLogic.getEventsMonth(date)) {
-            holidays.add(Dates.convertToLocalDateViaInstant(day));
+            if(day.compareTo(currentDate) > 0){
+                holidays.add(Dates.convertToLocalDateViaInstant(day));
+            }
         }
     }
 
@@ -112,7 +86,6 @@ public class MakeBetController implements Controller {
 
     @FXML
     void initialize() {
-
         setupEventSelection();
         setupResulttSelection();
 
@@ -159,7 +132,9 @@ public class MakeBetController implements Controller {
             tblEvents.getItems().clear();
             Vector<domain.Event> events = businessLogic.getEvents(Dates.convertToDate(datepicker.getValue()));
             for (domain.Event ev : events) {
-                tblEvents.getItems().add(ev);
+                if(ev.getEventDate().compareTo(currentDate)>0){
+                    tblEvents.getItems().add(ev);
+                }
             }
         });
 

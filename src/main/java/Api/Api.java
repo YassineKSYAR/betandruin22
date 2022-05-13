@@ -25,7 +25,7 @@ public class Api {
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
-                .url("http://api.football-data.org/v2/" + endpoint + "?dateFrom=2022-05-10&dateTo=2022-05-14")
+                .url("http://api.football-data.org/v2/" + endpoint + "?dateFrom=2022-05-15&dateTo=2022-05-19")
                 .get()
                 .addHeader("X-Auth-Token", System.getenv("TOKEN"))
                 .build();
