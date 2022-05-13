@@ -4,10 +4,7 @@ import java.io.UnsupportedEncodingException;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 
-/**
- *
- * @author Ibrahim Chowdhury
- */
+
 public class EmailSenderServiceImp implements IEmailSenderService{
     private EmailConfiguration configuration = new EmailConfiguration();
     private EmailSender emailSender = new EmailSender();
