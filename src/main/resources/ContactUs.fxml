@@ -17,19 +17,24 @@
             <Image url="@Background.jpeg" />
          </image>
       </ImageView>
-      <TextArea fx:id="description" layoutX="180.0" layoutY="176.0" prefHeight="200.0" prefWidth="281.0" style="-fx-border-color: black;" />
-      <TextField fx:id="subject" layoutX="180.0" layoutY="126.0" prefHeight="25.0" prefWidth="281.0" style="-fx-border-color: black;" />
+      <TextField fx:id="subject" alignment="CENTER" layoutX="180.0" layoutY="126.0" prefHeight="25.0" prefWidth="281.0" promptText="Subject" style="-fx-border-color: black;">
+         <font>
+            <Font size="13.0" />
+         </font></TextField>
+      <TextArea fx:id="description" layoutX="180.0" layoutY="176.0" onKeyPressed="#setBtn" prefHeight="200.0" prefWidth="281.0" style="-fx-border-color: black;" />
+
+
       <Button fx:id="SendBtn" layoutX="357.0" layoutY="400.0" mnemonicParsing="false" onAction="#onSend" prefHeight="30.0" prefWidth="113.0" style="-fx-background-color: black; -fx-background-radius: 20;" text="Send" textFill="#ffae00">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Label layoutX="82.0" layoutY="130.0" prefHeight="20.0" prefWidth="84.0" text="Subject :">
+      <Label layoutX="73.0" layoutY="131.0" prefHeight="20.0" prefWidth="78.0" text="Subject :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="82.0" layoutY="256.0" text="Description :">
+      <Label layoutX="52.0" layoutY="256.0" text="Description : ">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
@@ -52,5 +57,15 @@
          <font>
             <Font name="System Bold" size="14.0" />
          </font></Label>
+      <Label layoutX="139.0" layoutY="256.0" prefHeight="17.0" prefWidth="23.0" text="*" textFill="RED">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="139.0" layoutY="131.0" prefHeight="17.0" prefWidth="23.0" text="*" textFill="RED">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>
