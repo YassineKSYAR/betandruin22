@@ -38,9 +38,7 @@ public class ContactUs  implements Controller {
 
    @FXML
    void initialize(){
-
-           SendBtn.setDisable(true);
-
+        SendBtn.setDisable(true);
 
    }
 
@@ -48,7 +46,6 @@ public class ContactUs  implements Controller {
     void setBtn(KeyEvent event) {
         SendBtn.setDisable(false);
     }
-
 
     @FXML
     void onClose(ActionEvent event) {

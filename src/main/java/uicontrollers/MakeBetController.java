@@ -71,7 +71,7 @@ public class MakeBetController implements Controller {
     private void setEvents(int year, int month) {
         Date date = Dates.toDate(year,month);
         for (Date day : businessLogic.getEventsMonth(date)) {
-            if(day.compareTo(currentDate) > 0){
+            if(day.compareTo(currentDate) >=0){
                 holidays.add(Dates.convertToLocalDateViaInstant(day));
             }
         }
@@ -132,7 +132,7 @@ public class MakeBetController implements Controller {
             tblEvents.getItems().clear();
             Vector<domain.Event> events = businessLogic.getEvents(Dates.convertToDate(datepicker.getValue()));
             for (domain.Event ev : events) {
-                if(ev.getEventDate().compareTo(currentDate)>0){
+                if(ev.getEventDate().compareTo(currentDate)>=0){
                     tblEvents.getItems().add(ev);
                 }
             }
@@ -209,7 +209,7 @@ public class MakeBetController implements Controller {
 
             businessLogic.createBet(results.getIdR(), (int) amountInpute.getValue(), results.getFee(), mainUser.getUser().getId());
 
-            businessLogic.createMvm(date,results.getIdR(),"Bet", (int) amountInpute.getValue(), mainUser.getUser().getId());
+            businessLogic.createMvm(date,results.getIdR(),"Bet", (int) amountInpute.getValue()*(-1), mainUser.getUser().getId());
 
             betCr.setText("Your bet has been created");
             moenyIns.setText("");
