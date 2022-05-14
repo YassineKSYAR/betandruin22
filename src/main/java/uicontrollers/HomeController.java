@@ -25,17 +25,8 @@ public class HomeController implements Controller{
         home.showRegister();
     }
 
-    @FXML
-    private ComboBox<String> ComboLang;
 
-    @FXML
-    void initialize(){
-        ComboLang.getItems().addAll(
-                "en",
-                "es",
-                "eus"
-        );
-    }
+
 
 
 

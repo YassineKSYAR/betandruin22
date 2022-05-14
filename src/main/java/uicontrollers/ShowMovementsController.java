@@ -72,7 +72,7 @@ public class ShowMovementsController implements Controller {
                     int idR = (int) movement.getIdResults();
                     String type1 = movement.getType();
 
-                    MyBet myBet = new MyBet(idR, date1, type1, - amount1);
+                    MyBet myBet = new MyBet(idR, date1, type1,amount1);
                     System.out.println(myBet);
                     tblBet.getItems().add(myBet);
                     date.setCellValueFactory(new PropertyValueFactory<>("date"));
@@ -85,7 +85,7 @@ public class ShowMovementsController implements Controller {
                 Date date2 = movement.getDate();
                 float amount2 = movement.getAmount();
                 String type2 = movement.getType();
-                MyBet myBet = new MyBet(0, date2, type2, + amount2);
+                MyBet myBet = new MyBet(0, date2, type2,amount2);
                 System.out.println(myBet);
                 tblBet.getItems().add(myBet);
                 date.setCellValueFactory(new PropertyValueFactory<>("date"));

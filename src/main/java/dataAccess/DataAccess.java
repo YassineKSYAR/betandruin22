@@ -376,8 +376,10 @@ public class DataAccess  {
 
 
 			for(Bet B:WinningBets){
+				Date date =new Date();
 				addMoney((int) B.getIdUser(),B.getAmount()*B.getFee());
 				deleteBet(B.getIdUser(),B.getId());
+				createMvm(date,B.getIdResults(),"Win in a bet", (int) (B.getAmount()*B.getFee()),B.getIdUser());
 
 			}
 			for(Bet Bl:losersBets){
