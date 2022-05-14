@@ -50,27 +50,19 @@ public class ShowMovementsController implements Controller {
     @FXML
     void closeClick (ActionEvent event) {
         mainUser.showMain();
-
-
-
     }
 
     @FXML
     void onShowBet(MouseEvent event) {
-
         float myBalance=businessLogic.getMony(mainUser.user).get(0).getMoney();
         labelBalance.setText(""+myBalance);
         tblBet.getItems().clear();
         displayBets();
-
-
     }
 
     void  displayBets(){
-
         System.out.println(mainUser.getUser());
         List<Movements> movements=businessLogic.getBetMvm(mainUser.getUser());
-
         for(Movements movement:movements){
             if(movement.getIdResults()!=0) {
                 List<Results> results = businessLogic.getResult(movement.getIdResults());
@@ -99,8 +91,6 @@ public class ShowMovementsController implements Controller {
                 date.setCellValueFactory(new PropertyValueFactory<>("date"));
                 amount.setCellValueFactory(new PropertyValueFactory<>("f"));
                 type.setCellValueFactory(new PropertyValueFactory<>("type"));
-
-
             }
 
 

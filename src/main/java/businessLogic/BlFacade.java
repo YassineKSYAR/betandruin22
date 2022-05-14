@@ -65,8 +65,6 @@ public interface BlFacade  {
 	@WebMethod
 	public void removeEvent(Event event);
 
-	@WebMethod
-	public void removeEventQuestions(Event event);
 
 
 	/**

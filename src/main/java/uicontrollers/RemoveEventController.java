@@ -66,7 +66,6 @@ public class RemoveEventController implements Controller{
             holidays.add(Dates.convertToLocalDateViaInstant(day));
         }
     }
-
     private void setEventsPrePost(int year, int month) {
         LocalDate date = LocalDate.of(year, month, 1);
         setEvents(date.getYear(), date.getMonth().getValue());
@@ -150,7 +149,6 @@ public class RemoveEventController implements Controller{
             lblMessage.setStyle("-fx-background-color: red;-fx-background-radius: 5px;-fx-text-fill: white;");
             lblMessage.setText("No event is selected!!");
         }else{
-            businessLogic.removeEventQuestions(ev);
             businessLogic.removeEvent(ev);
             System.out.println("Event has been deleted :) :)");
             lblMessage.setStyle("-fx-background-color: green;-fx-background-radius: 5px;-fx-text-fill: white;");

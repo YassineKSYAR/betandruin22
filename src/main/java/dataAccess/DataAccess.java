@@ -231,16 +231,6 @@ public class DataAccess  {
 		return q;
 	}
 
-	public void removeEventQuestions(Event event){
-		System.out.println(">> DataAccess: createQuestion=> event = " + event );
-
-		Event ev = db.find(Event.class, event.getEventNumber());
-
-		db.getTransaction().begin();
-		ev.removeQuestions();
-		db.persist(ev);
-		db.getTransaction().commit();
-	}
 	public void removeBet(long resultId){
 		db.getTransaction().begin();
 		TypedQuery<Bet> query = db.createQuery("SELECT b FROM Bet b WHERE b.idResults=?1",

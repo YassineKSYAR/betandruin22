@@ -94,12 +94,6 @@ public class BlFacadeImplementation implements BlFacade {
 		dbManager.close();
 	}
 
-	@WebMethod
-	public void removeEventQuestions(Event event){
-		dbManager.open(false);
-		dbManager.removeEventQuestions(event);
-		dbManager.close();
-	}
 
 
 	@WebMethod
