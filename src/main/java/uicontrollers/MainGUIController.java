@@ -3,13 +3,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Stage;
 import ui.Home;
 import ui.MainGUI;
 import ui.MainUser;
 
 public class MainGUIController implements Controller{
 
-
+    @FXML
+    private Button logOutBtn;
     ///////////////////////////////////////////////
     @FXML
     public Button removeEventBtn;
@@ -45,13 +47,19 @@ public class MainGUIController implements Controller{
     @FXML
     void onPublishResult(ActionEvent event) { mainGUI.showPublishResult(); }
 
-
-
     @FXML
-    void initialize() {
+    void onlogOut(ActionEvent event) {
+        Stage stage=(Stage) logOutBtn.getScene().getWindow();
+        stage.close();
+        this.mainGUI=null;
+        Home home=new Home();
 
-
+        home.showMain();
     }
+
+
+
+
 
     @Override
     public void setMainApp(MainGUI mainGUI) {
@@ -69,13 +77,5 @@ public class MainGUIController implements Controller{
     }
 
 
-    public static class RegisterController {
-        @FXML
-        private Label welcomeText;
 
-        @FXML
-        protected void onHelloButtonClick() {
-            welcomeText.setText("Welcome to JavaFX Application!");
-        }
-    }
 }
