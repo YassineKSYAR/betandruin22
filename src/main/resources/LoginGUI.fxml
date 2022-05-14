@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane prefHeight="454.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.LoginController">
+<Pane prefHeight="454.0" prefWidth="582.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uicontrollers.LoginController">
    <children>
       <ImageView fitHeight="454.0" fitWidth="582.0">
          <image>
@@ -48,7 +48,7 @@
             </Label>
          </children>
       </Pane>
-      <Label fx:id="signUpLink" alignment="CENTER" layoutX="-10.0" layoutY="398.0" onMouseClicked="#onSignUp" prefHeight="59.0" prefWidth="593.0" style="-fx-background-color: black;" text="Don't have an account yet?" textFill="#ebb000">
+      <Label fx:id="signUpLink" alignment="CENTER" layoutX="1.0" layoutY="398.0" onMouseClicked="#onSignUp" prefHeight="59.0" prefWidth="582.0" style="-fx-background-color: black;" text="Don't have an account yet?" textFill="#ebb000">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
