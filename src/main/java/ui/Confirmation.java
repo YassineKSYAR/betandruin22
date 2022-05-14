@@ -38,9 +38,9 @@ public class Confirmation {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/VerficationEmail.fxml"));
         fxmlLoader.setControllerFactory(controllerClass -> new VerificationEmail(businessLogic,user,code));
-        Scene scene = new Scene(fxmlLoader.load(), 696, 613);
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
 
-        stage.setTitle("dfdsg");
+        stage.setTitle("Confirmation code");
         stage.setScene(scene);
         stage.show();
         stage.setResizable(false);
